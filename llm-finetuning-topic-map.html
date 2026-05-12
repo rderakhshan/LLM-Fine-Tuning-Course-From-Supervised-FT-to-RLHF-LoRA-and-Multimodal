@@ -6,142 +6,179 @@
 <title>LLM Fine-Tuning Course — Topic Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --font-body: 'DM Sans', system-ui, sans-serif;
-    --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
-    --bg: #f1f5f9;
-    --surface: #ffffff;
-    --surface-alt: #f8fafc;
-    --border: rgba(0, 0, 0, 0.07);
-    --text: #1e293b;
-    --text-dim: #64748b;
-    --primary: #1e40af;
-    --primary-dim: rgba(30, 64, 175, 0.08);
-    --primary-glow: rgba(30, 64, 175, 0.06);
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    --bg: #faf8f5;
+    --surface: rgba(255,255,255,0.92);
+    --surface-alt: #f5f2ed;
+    --border: rgba(0, 0, 0, 0.06);
+    --text: #1a1a2e;
+    --text-dim: #787878;
+    --primary: #4f46e5;
+    --primary-dim: rgba(79, 70, 229, 0.08);
+    --primary-glow: rgba(79, 70, 229, 0.08);
     --secondary: #d97706;
     --secondary-dim: rgba(217, 119, 6, 0.08);
     --accent-teal: #0d9488;
     --accent-teal-dim: rgba(13, 148, 136, 0.08);
-    --accent-rose: #be123c;
-    --accent-rose-dim: rgba(190, 18, 60, 0.08);
+    --accent-rose: #e11d48;
+    --accent-rose-dim: rgba(225, 29, 72, 0.08);
     --accent-emerald: #059669;
     --accent-emerald-dim: rgba(5, 150, 105, 0.08);
+    --accent-violet: #7c3aed;
+    --accent-violet-dim: rgba(124, 58, 237, 0.08);
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+    --card-shadow-hover: 0 8px 30px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+    --radius: 14px;
+    --radius-sm: 8px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --surface-alt: #172033;
-      --border: rgba(255, 255, 255, 0.07);
-      --text: #f1f5f9;
-      --text-dim: #94a3b8;
-      --primary: #60a5fa;
-      --primary-dim: rgba(96, 165, 250, 0.10);
-      --primary-glow: rgba(96, 165, 250, 0.05);
+      --bg: #0c0c14;
+      --surface: rgba(22, 22, 36, 0.92);
+      --surface-alt: #14141f;
+      --border: rgba(255, 255, 255, 0.06);
+      --text: #eeeeee;
+      --text-dim: #888899;
+      --primary: #818cf8;
+      --primary-dim: rgba(129, 140, 248, 0.10);
+      --primary-glow: rgba(129, 140, 248, 0.06);
       --secondary: #fbbf24;
       --secondary-dim: rgba(251, 191, 36, 0.10);
       --accent-teal: #2dd4bf;
       --accent-teal-dim: rgba(45, 212, 191, 0.10);
-      --accent-rose: #f87171;
-      --accent-rose-dim: rgba(248, 113, 113, 0.10);
+      --accent-rose: #fb7185;
+      --accent-rose-dim: rgba(251, 113, 133, 0.10);
       --accent-emerald: #34d399;
       --accent-emerald-dim: rgba(52, 211, 153, 0.10);
+      --accent-violet: #a78bfa;
+      --accent-violet-dim: rgba(167, 139, 250, 0.10);
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      --card-shadow-hover: 0 8px 30px rgba(0,0,0,0.3);
     }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background-color: var(--bg);
     background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 32px 32px;
+      radial-gradient(ellipse 80% 60% at 50% -20%, var(--primary-glow) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 110%, rgba(13,148,136,0.04) 0%, transparent 60%);
     color: var(--text);
     font-family: var(--font-body);
-    padding: 32px 24px 64px;
+    padding: 24px 24px 64px;
     min-height: 100vh;
   }
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .animate { animation: fadeUp 0.5s ease-out both; }
-  .animate-delay-1 { animation-delay: 0.1s; }
-  .animate-delay-2 { animation-delay: 0.2s; }
-  .animate-delay-3 { animation-delay: 0.3s; }
-  .animate-delay-4 { animation-delay: 0.4s; }
-  .animate-delay-5 { animation-delay: 0.5s; }
+  @keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .animate { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-delay-1 { animation-delay: 0.08s; }
+  .animate-delay-2 { animation-delay: 0.15s; }
+  .animate-delay-3 { animation-delay: 0.25s; }
+  .animate-delay-4 { animation-delay: 0.35s; }
+  .animate-delay-5 { animation-delay: 0.45s; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; }
   }
-  .container { max-width: 1120px; margin: 0 auto; }
+  .container { max-width: 1140px; margin: 0 auto; }
   /* ===== HERO ===== */
   .hero {
     text-align: center;
-    padding: 48px 0 32px;
+    padding: 56px 0 36px;
     position: relative;
   }
   .hero::after {
     content: '';
     position: absolute;
-    top: -40px; left: 50%; transform: translateX(-50%);
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 600px;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 65%);
     pointer-events: none;
   }
   .hero h1 {
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 10px;
     position: relative;
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .hero .subtitle {
     color: var(--text-dim);
-    font-size: 16px;
+    font-size: 15px;
     font-family: var(--font-mono);
     position: relative;
+    font-weight: 400;
   }
   .hero .badge {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 5px 16px;
+    border-radius: 100px;
+    font-size: 12px;
     font-family: var(--font-mono);
-    background: var(--primary-dim);
-    color: var(--primary);
+    background: var(--surface);
+    color: var(--text-dim);
     border: 1px solid var(--border);
     position: relative;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--card-shadow);
+  }
+  .hero .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    display: inline-block;
   }
   /* ===== SECTION HEADER ===== */
   .section-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 48px 0 20px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--border);
+    margin: 52px 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--border);
+    position: relative;
   }
   .section-header .num {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px; height: 28px;
-    border-radius: 6px;
+    width: 30px; height: 30px;
+    border-radius: var(--radius-sm);
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     font-family: var(--font-mono);
     background: var(--primary-dim);
     color: var(--primary);
+    flex-shrink: 0;
   }
   .section-header h2 {
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
   .section-header .dot {
-    width: 8px; height: 8px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -208,48 +245,53 @@
   .mermaid .nodeLabel { color: var(--text) !important; font-family: var(--font-body) !important; }
   .mermaid .edgeLabel { color: var(--text-dim) !important; background: var(--surface) !important; }
   /* ===== CARD GRID ===== */
-  .grid { display: grid; gap: 16px; }
+  .grid { display: grid; gap: 18px; }
   .grid-2 { grid-template-columns: 1fr 1fr; }
   .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
   @media (max-width: 800px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: var(--radius);
+    padding: 22px;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
+  .card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-1px); }
   .card::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
   }
-  .card-blue::before { background: var(--primary); }
-  .card-amber::before { background: var(--secondary); }
-  .card-teal::before { background: var(--accent-teal); }
-  .card-rose::before { background: var(--accent-rose); }
-  .card-emerald::before { background: var(--accent-emerald); }
+  .card-blue::before { background: linear-gradient(90deg, var(--primary), transparent); }
+  .card-amber::before { background: linear-gradient(90deg, var(--secondary), transparent); }
+  .card-teal::before { background: linear-gradient(90deg, var(--accent-teal), transparent); }
+  .card-rose::before { background: linear-gradient(90deg, var(--accent-rose), transparent); }
+  .card-emerald::before { background: linear-gradient(90deg, var(--accent-emerald), transparent); }
   .card h3 {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 8px;
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: -0.01em;
   }
   .card h3 .tag {
     font-size: 10px;
     font-family: var(--font-mono);
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 2px 10px;
+    border-radius: 100px;
     background: var(--primary-dim);
     color: var(--primary);
-    font-weight: 500;
+    font-weight: 600;
   }
   .card p {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.55;
+    line-height: 1.6;
   }
   .card ul {
     list-style: none;
@@ -259,7 +301,8 @@
     font-size: 13px;
     padding: 3px 0;
     color: var(--text);
-    display: flex; align-items: center; gap: 6px;
+    display: flex; align-items: center; gap: 8px;
+    line-height: 1.5;
   }
   .card ul li::before {
     content: '';
@@ -272,132 +315,68 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 10px;
+    margin-top: 12px;
   }
   .card .chip {
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 11px;
     font-family: var(--font-mono);
     background: var(--surface-alt);
     border: 1px solid var(--border);
     color: var(--text-dim);
+    font-weight: 500;
   }
   .card .chip-blue { background: var(--primary-dim); color: var(--primary); border-color: transparent; }
   .card .chip-amber { background: var(--secondary-dim); color: var(--secondary); border-color: transparent; }
   .card .chip-teal { background: var(--accent-teal-dim); color: var(--accent-teal); border-color: transparent; }
   .card .chip-rose { background: var(--accent-rose-dim); color: var(--accent-rose); border-color: transparent; }
-  /* ===== GOAL BANNER ===== */
-  .goal-banner {
-    position: relative;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 0;
-    margin-bottom: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .goal-banner::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-  }
-  .goal-banner-teal::before { background: linear-gradient(90deg, var(--accent-teal), #14b8a6); }
-  .goal-banner-blue::before { background: linear-gradient(90deg, var(--primary), #3b82f6); }
-  .goal-banner-rose::before { background: linear-gradient(90deg, var(--accent-rose), #e11d48); }
-  .goal-banner-emerald::before { background: linear-gradient(90deg, var(--accent-emerald), #10b981); }
-  .goal-banner-amber::before { background: linear-gradient(90deg, var(--secondary), #f59e0b); }
-  .goal-ribbon {
-    display: inline-block;
-    position: relative;
-    padding: 5px 16px 5px 14px;
-    font-size: 11px;
-    font-weight: 600;
-    font-family: var(--font-mono);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #fff;
-    align-self: flex-start;
-    border-radius: 0 0 8px 0;
-  }
-  .goal-banner-teal .goal-ribbon { background: var(--accent-teal); }
-  .goal-banner-blue .goal-ribbon { background: var(--primary); }
-  .goal-banner-rose .goal-ribbon { background: var(--accent-rose); }
-  .goal-banner-emerald .goal-ribbon { background: var(--accent-emerald); }
-  .goal-banner-amber .goal-ribbon { background: var(--secondary); }
-  .goal-body {
-    padding: 16px 22px 20px;
-  }
-  .goal-body .goal-statement {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.45;
-    margin-bottom: 6px;
-  }
-  .goal-body .goal-quote {
-    font-size: 13px;
-    color: var(--text-dim);
-    font-style: italic;
-    padding-left: 14px;
-    border-left: 2px solid var(--border);
-    margin-top: 6px;
-  }
-  .goal-body .goal-quote::before {
-    content: '\201C';
-    font-size: 18px;
-    color: var(--text-dim);
-    margin-right: 2px;
-  }
-  .goal-body .goal-quote::after {
-    content: '\201D';
-    font-size: 18px;
-    color: var(--text-dim);
-    margin-left: 2px;
-  }
-  /* ===== DECORATIVE RING CARD ===== */
+  /* ===== MODERN CARD (ring) ===== */
   .card-ring {
     position: relative;
     background: var(--surface);
     border: none;
-    border-radius: 14px;
-    padding: 22px;
+    border-radius: var(--radius);
+    padding: 24px;
     overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
+  .card-ring:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-1px); }
   .card-ring::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 14px;
-    padding: 2px;
+    border-radius: var(--radius);
+    padding: 1.5px;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
   }
-  .card-ring-teal::before { background: linear-gradient(135deg, var(--accent-teal), transparent 60%); }
-  .card-ring-blue::before { background: linear-gradient(135deg, var(--primary), transparent 60%); }
-  .card-ring-rose::before { background: linear-gradient(135deg, var(--accent-rose), transparent 60%); }
-  .card-ring-emerald::before { background: linear-gradient(135deg, var(--accent-emerald), transparent 60%); }
-  .card-ring-amber::before { background: linear-gradient(135deg, var(--secondary), transparent 60%); }
+  .card-ring-teal::before { background: linear-gradient(135deg, var(--accent-teal), transparent 50%); }
+  .card-ring-blue::before { background: linear-gradient(135deg, var(--primary), transparent 50%); }
+  .card-ring-rose::before { background: linear-gradient(135deg, var(--accent-rose), transparent 50%); }
+  .card-ring-emerald::before { background: linear-gradient(135deg, var(--accent-emerald), transparent 50%); }
+  .card-ring-amber::before { background: linear-gradient(135deg, var(--secondary), transparent 50%); }
   .card-ring h3 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    letter-spacing: -0.01em;
   }
   .card-ring .goal-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px; height: 24px;
-    border-radius: 6px;
+    width: 26px; height: 26px;
+    border-radius: var(--radius-sm);
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
     flex-shrink: 0;
   }
   .card-ring-teal .goal-icon { background: var(--accent-teal-dim); color: var(--accent-teal); }
@@ -406,7 +385,7 @@
   .card-ring p {
     font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.55;
+    line-height: 1.6;
   }
   .card-ring ul {
     list-style: none;
@@ -414,18 +393,19 @@
   }
   .card-ring ul li {
     font-size: 13px;
-    padding: 2px 0;
+    padding: 3px 0;
     color: var(--text);
     display: flex;
     align-items: flex-start;
     gap: 8px;
+    line-height: 1.5;
   }
   .card-ring ul li .li-marker {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 18px; height: 18px;
-    border-radius: 4px;
+    width: 20px; height: 20px;
+    border-radius: 5px;
     font-size: 10px;
     font-weight: 700;
     flex-shrink: 0;
@@ -434,35 +414,39 @@
   .card-ring-teal ul li .li-marker { background: var(--accent-teal-dim); color: var(--accent-teal); }
   .card-ring-blue ul li .li-marker { background: var(--primary-dim); color: var(--primary); }
   .card-ring-rose ul li .li-marker { background: var(--accent-rose-dim); color: var(--accent-rose); }
-  /* ===== CARD WITH CORNER ACCENT ===== */
+  /* ===== CORNER ACCENT CARD ===== */
   .card-corner {
     position: relative;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: var(--radius);
+    padding: 22px;
     overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease;
   }
+  .card-corner:hover { box-shadow: var(--card-shadow-hover); }
   .card-corner::after {
     content: '';
     position: absolute;
     top: 0; right: 0;
-    width: 40px; height: 40px;
-    border-radius: 0 12px 0 12px;
+    width: 48px; height: 48px;
+    border-radius: 0 var(--radius) 0 16px;
   }
   .card-corner-teal::after { background: var(--accent-teal-dim); }
   .card-corner-blue::after { background: var(--primary-dim); }
   .card-corner-rose::after { background: var(--accent-rose-dim); }
   .card-corner h3 {
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 8px;
     padding-right: 32px;
   }
   .card-corner p {
     font-size: 13px;
     color: var(--text-dim);
-    line-height: 1.55;
+    line-height: 1.6;
   }
   .card-corner ul {
     list-style: none;
@@ -470,7 +454,7 @@
   }
   .card-corner ul li {
     font-size: 13px;
-    padding: 2px 0;
+    padding: 3px 0;
     color: var(--text);
     display: flex;
     align-items: flex-start;
@@ -483,29 +467,75 @@
     flex-shrink: 0;
   }
   .grid-full { grid-column: 1 / -1; }
+  /* ===== TABS ===== */
+  .tab-group { margin-bottom: 20px; }
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: relative;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1.5px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .tab-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.2s, background 0.2s;
+    flex-shrink: 0;
+    z-index: 1;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 8px; right: 8px;
+    height: 2px;
+    background: transparent;
+    transition: background 0.2s;
+    border-radius: 2px 2px 0 0;
+    z-index: 2;
+  }
+  .tab-btn:hover { color: var(--text); background: var(--primary-dim); }
+  .tab-btn.active { color: var(--primary); font-weight: 600; }
+  .tab-btn.active::after { background: var(--primary); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .tab-panel .grid { margin-top: 16px; }
+  @media (max-width: 640px) {
+    .tab-btn { padding: 8px 14px; font-size: 11px; }
+  }
   /* ===== ARCHITECTURAL BLUEPRINT ===== */
   .blueprint {
     position: relative;
-    background: #f0f4f8;
+    background: var(--surface);
     background-image:
-      linear-gradient(rgba(30, 58, 95, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(30, 58, 95, 0.07) 1px, transparent 1px);
-    background-size: 24px 24px;
-    border: 2px solid #1e3a5f;
-    border-radius: 4px;
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 32px 28px 28px;
     margin-bottom: 24px;
-    min-height: 520px;
+    min-height: 480px;
     font-family: var(--font-mono);
-  }
-  @media (prefers-color-scheme: dark) {
-    .blueprint {
-      background: #0f172a;
-      background-image:
-        linear-gradient(rgba(96, 165, 250, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
-      border-color: #3b82f6;
-    }
+    backdrop-filter: blur(12px);
+    box-shadow: var(--card-shadow);
   }
   .blueprint .bp-compass {
     position: absolute;
@@ -537,46 +567,27 @@
   /* ZONES */
   .bp-zone {
     position: relative;
-    padding: 14px 16px;
-    margin: 8px;
-    background: rgba(255,255,255,0.75);
-    border: 1.5px solid #1e3a5f;
-    backdrop-filter: blur(2px);
+    padding: 16px 20px;
+    margin: 6px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.2s;
   }
-  @media (prefers-color-scheme: dark) {
-    .bp-zone {
-      background: rgba(15, 23, 42, 0.8);
-      border-color: #3b82f6;
-    }
-  }
+  .bp-zone:hover { box-shadow: var(--card-shadow-hover); }
   .bp-zone-double {
-    border-width: 3px;
-    border-style: double;
+    border-width: 2px;
+    border-style: solid;
+    box-shadow: 0 0 0 1px var(--border), var(--card-shadow);
   }
   .bp-zone-dashed {
     border-style: dashed;
     border-width: 1.5px;
   }
   .bp-zone-core {
-    position: relative;
-    padding: 20px 18px;
-    margin: 8px;
-    background: rgba(255,255,255,0.9);
-    border: 3px double #1e3a5f;
-    text-align: center;
-    backdrop-filter: blur(2px);
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 130px;
-  }
-  @media (prefers-color-scheme: dark) {
-    .bp-zone-core {
-      background: rgba(15, 23, 42, 0.9);
-      border-color: #60a5fa;
-    }
+    display: none;
   }
   .bp-zone-core .bp-core-icon {
     font-size: 22px;
@@ -603,15 +614,15 @@
     letter-spacing: 0.05em;
   }
   .bp-zone .bp-zone-ribbon {
-    position: absolute;
-    top: -1px; left: -1px;
-    padding: 2px 10px 2px 8px;
-    font-size: 8px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    display: inline-block;
+    padding: 3px 12px 3px 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #fff;
-    border-radius: 0 0 4px 0;
+    border-radius: 0 0 var(--radius-sm) 0;
+    margin-bottom: 6px;
   }
   .bp-zone-teal .bp-zone-ribbon { background: var(--accent-teal); }
   .bp-zone-blue .bp-zone-ribbon { background: var(--primary); }
@@ -647,16 +658,13 @@
     margin-top: 5px;
   }
   .bp-zone .bp-chip {
-    padding: 1px 6px;
-    font-size: 8px;
+    padding: 2px 8px;
+    font-size: 9px;
     font-family: var(--font-mono);
-    border-radius: 2px;
-    background: rgba(0,0,0,0.04);
+    border-radius: 100px;
+    background: var(--surface-alt);
     color: var(--text-dim);
-    border: 1px solid rgba(0,0,0,0.06);
-  }
-  @media (prefers-color-scheme: dark) {
-    .bp-zone .bp-chip { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.08); }
+    border: 1px solid var(--border);
   }
   /* GRID PLACEMENT */
   .bp-north { grid-column: 2; grid-row: 1; justify-self: stretch; align-self: start; }
@@ -677,14 +685,12 @@
   .bp-outer-item {
     flex: 1;
     max-width: 240px;
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.5);
-    border: 1px dashed rgba(30,58,95,0.3);
-    border-radius: 3px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     text-align: center;
-  }
-  @media (prefers-color-scheme: dark) {
-    .bp-outer-item { background: rgba(15,23,42,0.5); border-color: rgba(96,165,250,0.2); }
+    backdrop-filter: blur(8px);
   }
   .bp-outer-item .bp-outer-label {
     font-size: 9px;
@@ -749,17 +755,15 @@
   .bp-title-block {
     position: absolute;
     bottom: 8px; left: 12px;
-    border: 1px solid rgba(30,58,95,0.2);
-    padding: 4px 10px;
-    font-size: 7px;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    font-size: 8px;
     color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     line-height: 1.5;
-    background: rgba(255,255,255,0.5);
-    border-radius: 2px;
+    background: var(--surface);
+    border-radius: 4px;
   }
-  @media (prefers-color-scheme: dark) { .bp-title-block { border-color: rgba(96,165,250,0.15); background: rgba(15,23,42,0.5); } }
   .bp-title-block strong { font-weight: 600; }
   @media (max-width: 700px) {
     .bp-grid { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto auto; }
@@ -786,12 +790,16 @@
     text-align: center;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 10px;
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s, transform 0.3s;
   }
+  .pipeline-flow .step-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-1px); }
   .pipeline-flow .step-card h4 {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 2px;
   }
   .pipeline-flow .step-card p {
@@ -809,22 +817,24 @@
     background: var(--primary-dim);
     border: 1px solid var(--border);
     border-left: 3px solid var(--primary);
-    border-radius: 8px;
-    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
     font-size: 14px;
     color: var(--text);
-    margin: 16px 0;
+    margin: 18px 0;
+    line-height: 1.6;
+    backdrop-filter: blur(8px);
   }
   .callout code {
     font-family: var(--font-mono);
     font-size: 13px;
     background: var(--surface);
-    padding: 1px 6px;
+    padding: 2px 8px;
     border-radius: 4px;
   }
   @media (max-width: 640px) {
     body { padding: 16px 12px; }
-    .hero h1 { font-size: 26px; }
+    .hero h1 { font-size: 28px; }
     .pipeline-flow { flex-direction: column; }
     .pipeline-flow .arrow { transform: rotate(90deg); }
   }
@@ -840,146 +850,138 @@
     <span class="badge">14+ Topics &centerdot; 3 Pipeline Stages &centerdot; 8+ PEFT Techniques</span>
   </div>
 
-  <!-- ===== ARCHITECTURAL BLUEPRINT ===== -->
+  <!-- ===== CHRONOLOGICAL PIPELINE (Blueprint) ===== -->
   <div class="section-header animate animate-delay-1">
     <span class="num">1</span>
     <div class="dot" style="background:var(--primary)"></div>
-    <h2>Architectural Zone Map</h2>
+    <h2>Chronological Pipeline — 4 Steps</h2>
   </div>
 
   <div class="blueprint animate animate-delay-1">
     <div class="bp-compass"><span>&#x25E3;</span>&ensp;N</div>
-    <div class="bp-scale">scale: 1 concept &asymp; 1 module &ensp;&#x2014;&ensp; rev. 1.0</div>
+    <div class="bp-scale">pipeline &asymp; 4 ordered stages &ensp;&#x2014;&ensp; rev. 2.0</div>
 
-    <div class="bp-grid">
-
-      <!-- NORTH: Pre-training -->
-      <div class="bp-zone bp-zone-double bp-zone-teal bp-north">
-        <span class="bp-zone-ribbon">Stage 1</span>
-        <div class="bp-zone-title">Unsupervised Pre-training</div>
-        <p>Next-token prediction on internet-scale text corpora. Produces the base model (Llama, Mistral, GPT, DeepSeek base).</p>
-        <ul>
-          <li>Self-supervised &mdash; the next token <em>is</em> the label</li>
-          <li>Data: Common Crawl, Wikipedia, books, code, papers</li>
-          <li>Infrastructure: thousands of GPUs, weeks of training</li>
-        </ul>
-        <div class="bp-chips">
-          <span class="bp-chip">causal LM</span>
-          <span class="bp-chip">base model</span>
-          <span class="bp-chip">autoregressive</span>
+    <!-- Step 1: Pre-training -->
+    <div style="margin-bottom:6px;">
+      <div class="bp-zone bp-zone-double bp-zone-teal" style="margin:0;">
+        <span class="bp-zone-ribbon">Step 1</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div class="bp-zone-title" style="margin-top:0;">Unsupervised Pre-training</div>
+            <p style="margin:2px 0 0;">Next-token prediction on internet-scale text. Produces the base model (Llama, Mistral, GPT, DeepSeek base).</p>
+          </div>
+          <div style="display:flex; gap:4px; flex-wrap:wrap;">
+            <span class="bp-chip">causal LM</span>
+            <span class="bp-chip">base model</span>
+            <span class="bp-chip">autoregressive</span>
+          </div>
         </div>
       </div>
-
-      <!-- WEST: SFT Data Level -->
-      <div class="bp-zone bp-zone-dashed bp-zone-blue bp-west">
-        <span class="bp-zone-ribbon">Data</span>
-        <div class="bp-zone-title">SFT Data Level</div>
-        <ul>
-          <li><strong>Non-instructional</strong> &mdash; plain text PDFs/documents for domain adaptation</li>
-          <li><strong>Instructional</strong> &mdash; QA pairs (Alpaca, Open-Orca) for chatbot training</li>
-          <li>Data creation via human annotation or LLM synthetic generation</li>
-        </ul>
-      </div>
-
-      <!-- CORE -->
-      <div class="bp-zone-core bp-core">
-        <div class="bp-core-icon">LLM Fine-Tuning</div>
-        <div class="bp-core-sub">Course Topic Map</div>
-        <div class="bp-core-badge">14+ topics &times; 3 stages</div>
-      </div>
-
-      <!-- EAST: PEFT Techniques -->
-      <div class="bp-zone bp-zone-dashed bp-zone-blue bp-east">
-        <span class="bp-zone-ribbon">PEFT</span>
-        <div class="bp-zone-title">Parameter-Efficient FT</div>
-        <ul>
-          <li><strong>LoRA / QLoRA</strong> &mdash; low-rank adapters on quantized base</li>
-          <li><strong>DoRA</strong> &mdash; weight-decomposed LoRA</li>
-          <li><strong>Adapter / BitFit / IA&sup3;</strong> &mdash; insert / bias / scale</li>
-          <li><strong>Prefix / Prompt Tuning</strong> &mdash; virtual token embeddings</li>
-        </ul>
-      </div>
-
-      <!-- SOUTH: Alignment -->
-      <div class="bp-zone bp-zone-double bp-zone-rose bp-south">
-        <span class="bp-zone-ribbon">Stage 3</span>
-        <div class="bp-zone-title">Preference Alignment</div>
-        <p>Align model outputs with human expectations: safe, helpful, polite, honest.</p>
-        <ul>
-          <li><strong>RLHF</strong> &mdash; reward model + PPO (InstructGPT)</li>
-          <li><strong>RLAIF</strong> &mdash; AI-generated preference labels (Anthropic)</li>
-          <li><strong>DPO</strong> &mdash; direct supervised loss, no reward model</li>
-        </ul>
-        <div class="bp-chips">
-          <span class="bp-chip">safety</span>
-          <span class="bp-chip">helpfulness</span>
-          <span class="bp-chip">honesty</span>
-        </div>
-      </div>
-
     </div>
 
-    <!-- Connector lines -->
-    <div class="bp-connector bp-connector-ns"></div>
-    <div class="bp-connector bp-connector-we"></div>
-    <div class="bp-arrow bp-arrow-n"></div>
-    <div class="bp-arrow bp-arrow-s"></div>
-    <div class="bp-arrow bp-arrow-w"></div>
-    <div class="bp-arrow bp-arrow-e"></div>
+    <!-- Down arrow -->
+    <div style="display:flex; justify-content:center; padding:2px 0;">
+      <svg width="20" height="16" viewBox="0 0 20 16" style="opacity:0.35;">
+        <polygon points="10,16 0,0 20,0" fill="var(--accent-teal)"/>
+      </svg>
+    </div>
 
-    <!-- Outer ring: cross-cutting topics -->
-    <div class="bp-outer">
-      <div class="bp-outer-item">
-        <div class="bp-outer-label">Frameworks &amp; Tools</div>
-        <p>Hugging Face &bull; LLaMA Factory &bull; Unsloth &bull; Axolotl</p>
+    <!-- Step 2: Domain FT -->
+    <div style="margin-bottom:6px;">
+      <div class="bp-zone bp-zone-dashed bp-zone-teal" style="margin:0;">
+        <span class="bp-zone-ribbon">Step 2</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div class="bp-zone-title" style="margin-top:0;">Domain Adaptation (Non-Instructional)</div>
+            <p style="margin:2px 0 0;">Plain text from PDFs, documents, books. Trained via next-token prediction to absorb domain vocabulary, tone, and terminology. No labels needed.</p>
+          </div>
+          <div style="display:flex; gap:4px; flex-wrap:wrap;">
+            <span class="bp-chip">plain text</span>
+            <span class="bp-chip">domain-specific</span>
+          </div>
+        </div>
       </div>
-      <div class="bp-outer-item">
-        <div class="bp-outer-label">Dataset Types</div>
-        <p>Non-instructional &bull; Instructional &bull; Preference/DPO</p>
+    </div>
+
+    <!-- Down arrow -->
+    <div style="display:flex; justify-content:center; padding:2px 0;">
+      <svg width="20" height="16" viewBox="0 0 20 16" style="opacity:0.35;">
+        <polygon points="10,16 0,0 20,0" fill="var(--primary)"/>
+      </svg>
+    </div>
+
+    <!-- Step 3: Instruction FT -->
+    <div style="margin-bottom:6px;">
+      <div class="bp-zone bp-zone-dashed bp-zone-blue" style="margin:0;">
+        <span class="bp-zone-ribbon">Step 3</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div class="bp-zone-title" style="margin-top:0;">Instruction FT (Conversation + PEFT)</div>
+            <p style="margin:2px 0 0;">QA pairs (Alpaca-format) + LoRA/QLoRA/DoRA to teach instruction-following on top of the domain-adapted model. This is the stage that gives SFT its name.</p>
+          </div>
+          <div style="display:flex; gap:4px; flex-wrap:wrap;">
+            <span class="bp-chip">LoRA</span>
+            <span class="bp-chip">QLoRA</span>
+            <span class="bp-chip">PEFT</span>
+          </div>
+        </div>
       </div>
-      <div class="bp-outer-item">
-        <div class="bp-outer-label">Special Topics</div>
-        <p>SLM &bull; Multimodal &bull; Embedding Fine-tuning</p>
+    </div>
+
+    <!-- Down arrow -->
+    <div style="display:flex; justify-content:center; padding:2px 0;">
+      <svg width="20" height="16" viewBox="0 0 20 16" style="opacity:0.35;">
+        <polygon points="10,16 0,0 20,0" fill="var(--accent-rose)"/>
+      </svg>
+    </div>
+
+    <!-- Step 4: Alignment -->
+    <div style="margin-bottom:0;">
+      <div class="bp-zone bp-zone-double bp-zone-rose" style="margin:0;">
+        <span class="bp-zone-ribbon">Step 4</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div class="bp-zone-title" style="margin-top:0;">Preference Alignment</div>
+            <p style="margin:2px 0 0;">Align outputs with human expectations: safe, helpful, polite, honest. RLHF (PPO), RLAIF (AI judge), or DPO (direct supervised loss).</p>
+          </div>
+          <div style="display:flex; gap:4px; flex-wrap:wrap;">
+            <span class="bp-chip">RLHF</span>
+            <span class="bp-chip">DPO</span>
+            <span class="bp-chip">safety</span>
+          </div>
+        </div>
       </div>
-      <div class="bp-outer-item">
-        <div class="bp-outer-label">Model Families</div>
-        <p>Llama &bull; GPT &bull; Mistral &bull; DeepSeek &bull; Gemini</p>
+    </div>
+
+    <!-- Cross-cutting topics footer -->
+    <div style="margin-top:24px; padding-top:16px; border-top:1.5px dashed rgba(30,58,95,0.2); display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <div style="text-align:center; min-width:120px;">
+        <div style="font-size:8px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); opacity:0.6;">Frameworks</div>
+        <p style="font-size:9px; color:var(--text-dim); margin:2px 0 0;">Hugging Face &bull; LLaMA Factory &bull; Unsloth &bull; Axolotl</p>
+      </div>
+      <div style="text-align:center; min-width:120px;">
+        <div style="font-size:8px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); opacity:0.6;">Datasets</div>
+        <p style="font-size:9px; color:var(--text-dim); margin:2px 0 0;">Non-instructional &bull; Instructional &bull; Preference</p>
+      </div>
+      <div style="text-align:center; min-width:120px;">
+        <div style="font-size:8px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); opacity:0.6;">Special Topics</div>
+        <p style="font-size:9px; color:var(--text-dim); margin:2px 0 0;">SLM &bull; Multimodal &bull; Embedding FT</p>
+      </div>
+      <div style="text-align:center; min-width:120px;">
+        <div style="font-size:8px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); opacity:0.6;">Model Families</div>
+        <p style="font-size:9px; color:var(--text-dim); margin:2px 0 0;">Llama &bull; GPT &bull; Mistral &bull; DeepSeek &bull; Gemini</p>
       </div>
     </div>
 
     <div class="bp-title-block">
-      <strong>LLM Fine-Tuning &mdash; Architectural Zone Plan</strong> &ensp;|&ensp; rev 1 &ensp;|&ensp; sheet 1/1
-    </div>
-  </div>
-
-  <!-- ===== PIPELINE OVERVIEW ===== -->
-  <div class="section-header animate animate-delay-2">
-    <span class="num">2</span>
-    <div class="dot" style="background:var(--secondary)"></div>
-    <h2>LLM Training Pipeline — Three Stages</h2>
-  </div>
-
-  <div class="pipeline-flow animate animate-delay-2">
-    <div class="step-card">
-      <h4 style="color:var(--accent-teal)">1. Unsupervised Pre-training</h4>
-      <p>Next-token prediction &middot; Internet data</p>
-    </div>
-    <span class="arrow">&rarr;</span>
-    <div class="step-card">
-      <h4 style="color:var(--primary)">2. Supervised Fine-tuning (SFT)</h4>
-      <p>Domain &amp; instruction data &middot; PEFT</p>
-    </div>
-    <span class="arrow">&rarr;</span>
-    <div class="step-card">
-      <h4 style="color:var(--accent-rose)">3. Preference Alignment</h4>
-      <p>RLHF / DPO &middot; Human feedback</p>
+      <strong>LLM Fine-Tuning &mdash; Chronological Pipeline</strong> &ensp;|&ensp; rev 2 &ensp;|&ensp; sheet 1/1
     </div>
   </div>
 
   <!-- ===== DETAIL CARDS ===== -->
 
   <div class="section-header animate animate-delay-3">
-    <span class="num">3</span>
+    <span class="num">2</span>
     <div class="dot" style="background:var(--accent-teal)"></div>
     <h2>Stage 1 — Unsupervised Pre-training</h2>
   </div>
@@ -1027,99 +1029,114 @@
     <h2 style="font-size:18px">Big Picture — How Pre-training Works</h2>
   </div>
 
-  <div class="grid grid-2 animate animate-delay-3">
-    <div class="card-ring card-ring-teal grid-full">
-      <h3><span class="goal-icon">&#9670;</span> The Pipeline — End to End</h3>
-      <p>Pre-training follows a linear data-to-weights pipeline executed at enormous scale across thousands of GPUs for weeks or months:</p>
-      <div style="display:flex; align-items:center; gap:4px; margin:12px 0; flex-wrap:wrap;">
-        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Collect raw text</span>
-        <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
-        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Clean &amp; filter</span>
-        <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
-        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Tokenize</span>
-        <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
-        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Chunk to context window</span>
-        <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
-        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Autoregressive training</span>
-        <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
-        <span style="background:var(--accent-teal); color:#fff; padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono); font-weight:600;">Base model checkpoint</span>
-      </div>
-      <ul>
-        <li><span class="li-marker">1</span> <strong>Collect</strong>: Crawl the internet (Common Crawl), ingest Wikipedia, books, research papers, code repositories, forums. Scale: tens of terabytes to petabytes of text.</li>
-        <li><span class="li-marker">2</span> <strong>Clean &amp; filter</strong>: Deduplicate (MinHash), remove low-quality pages (perplexity filtering), strip HTML, filter toxic/spam content, language-identify to keep target languages.</li>
-        <li><span class="li-marker">3</span> <strong>Tokenize</strong>: Convert text to token IDs using a learned tokenizer (BPE, SentencePiece, or similar). Vocabulary size is typically 32K&ndash;128K tokens.</li>
-        <li><span class="li-marker">4</span> <strong>Chunk</strong>: Split the tokenized corpus into contiguous blocks matching the model's context window (e.g., 2048, 4096, or 8192 tokens). Documents are concatenated with a special separator token; chunks that cross document boundaries are allowed.</li>
-        <li><span class="li-marker">5</span> <strong>Train</strong>: Autoregressive language modeling — for each position, predict the next token given all previous tokens. Loss is cross-entropy over the vocabulary. Gradients are computed and backpropagated through all transformer layers.</li>
-        <li><span class="li-marker">6</span> <strong>Checkpoint</strong>: Save model weights periodically. The final checkpoint is the <strong>base model</strong>, capable of continuing text but not following instructions.</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip chip-teal">Causal LM</span>
-        <span class="chip chip-teal">Autoregressive</span>
-        <span class="chip chip-teal">Cross-entropy loss</span>
-        <span class="chip chip-teal">BPE tokenizer</span>
-        <span class="chip chip-teal">Deduplication</span>
+  <div class="tab-group animate animate-delay-3" data-tab-group="big-picture">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="bp-0">Pipeline</button>
+      <button class="tab-btn" data-tab="bp-1">Data Types</button>
+      <button class="tab-btn" data-tab="bp-2">Process</button>
+      <button class="tab-btn" data-tab="bp-3">What It Learns</button>
+    </div>
+
+    <div class="tab-panel active" data-tab-panel="bp-0">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3><span class="goal-icon">&#9670;</span> The Pipeline — End to End</h3>
+        <p>Pre-training follows a linear data-to-weights pipeline executed at enormous scale across thousands of GPUs for weeks or months:</p>
+        <div style="display:flex; align-items:center; gap:4px; margin:12px 0; flex-wrap:wrap;">
+          <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Collect raw text</span>
+          <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
+          <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Clean &amp; filter</span>
+          <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
+          <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Tokenize</span>
+          <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
+          <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Chunk to context window</span>
+          <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
+          <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono);">Autoregressive training</span>
+          <span style="color:var(--text-dim); font-size:16px;">&rarr;</span>
+          <span style="background:var(--accent-teal); color:#fff; padding:4px 10px; border-radius:6px; font-size:11px; font-family:var(--font-mono); font-weight:600;">Base model checkpoint</span>
+        </div>
+        <ul>
+          <li><span class="li-marker">1</span> <strong>Collect</strong>: Crawl the internet (Common Crawl), ingest Wikipedia, books, research papers, code repositories, forums. Scale: tens of terabytes to petabytes of text.</li>
+          <li><span class="li-marker">2</span> <strong>Clean &amp; filter</strong>: Deduplicate (MinHash), remove low-quality pages (perplexity filtering), strip HTML, filter toxic/spam content, language-identify to keep target languages.</li>
+          <li><span class="li-marker">3</span> <strong>Tokenize</strong>: Convert text to token IDs using a learned tokenizer (BPE, SentencePiece). Vocabulary size is typically 32K&ndash;128K tokens.</li>
+          <li><span class="li-marker">4</span> <strong>Chunk</strong>: Split the tokenized corpus into contiguous blocks matching the model's context window (e.g., 2048, 4096, or 8192 tokens). Documents are concatenated with a special separator token.</li>
+          <li><span class="li-marker">5</span> <strong>Train</strong>: Autoregressive language modeling — for each position, predict the next token given all previous tokens. Loss is cross-entropy over the vocabulary.</li>
+          <li><span class="li-marker">6</span> <strong>Checkpoint</strong>: Save model weights periodically. The final checkpoint is the <strong>base model</strong>.</li>
+        </ul>
+        <div class="chip-group">
+          <span class="chip chip-teal">Causal LM</span>
+          <span class="chip chip-teal">Autoregressive</span>
+          <span class="chip chip-teal">Cross-entropy loss</span>
+          <span class="chip chip-teal">BPE tokenizer</span>
+          <span class="chip chip-teal">Deduplication</span>
+        </div>
       </div>
     </div>
 
-    <div class="card-ring card-ring-teal">
-      <h3><span class="goal-icon">&#9632;</span> Data Types &amp; Sources</h3>
-      <p>The pre-training corpus is a mixture of diverse text sources, carefully balanced to produce a general-purpose model:</p>
-      <ul>
-        <li><span class="li-marker">W</span> <strong>Web pages</strong> — Common Crawl (monthly snapshots of the internet), filtered and deduplicated. This is the largest source (60&ndash;80% of tokens for most models).</li>
-        <li><span class="li-marker">B</span> <strong>Books</strong> — Project Gutenberg, copyrighted books (where licensed), self-published works. Provides long-form narrative and deep reasoning.</li>
-        <li><span class="li-marker">A</span> <strong>Academic papers</strong> — arXiv, PubMed Central, Semantic Scholar. Scientific rigor and formal language.</li>
-        <li><span class="li-marker">C</span> <strong>Code</strong> — GitHub public repositories (Python, JavaScript, C++, etc.). Teaches logical structure, syntax, and reasoning.</li>
-        <li><span class="li-marker">E</span> <strong>Encyclopedic</strong> — Wikipedia dumps in multiple languages. Factual knowledge and structured exposition.</li>
-        <li><span class="li-marker">F</span> <strong>Forums &amp; Q&amp;A</strong> — Reddit, Stack Overflow, Quora. Conversational and instructional language patterns.</li>
-        <li><span class="li-marker">M</span> <strong>Multilingual</strong> — Non-English text to enable cross-lingual transfer. Most models use 30&ndash;100+ languages.</li>
-      </ul>
-      <p style="margin-top:8px;font-size:13px;color:var(--text-dim);">Data ratios matter — too much web text makes the model chatty and prone to hallucination; too much code makes it overly literal. Each research team has proprietary mixing ratios.</p>
-      <div class="chip-group">
-        <span class="chip chip-teal">Common Crawl</span>
-        <span class="chip chip-teal">Wikipedia</span>
-        <span class="chip chip-teal">GitHub</span>
-        <span class="chip chip-teal">arXiv</span>
-        <span class="chip chip-teal">Reddit</span>
-        <span class="chip chip-teal">Multilingual</span>
+    <div class="tab-panel" data-tab-panel="bp-1">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3><span class="goal-icon">&#9632;</span> Data Types &amp; Sources</h3>
+        <p>The pre-training corpus is a mixture of diverse text sources, carefully balanced to produce a general-purpose model:</p>
+        <ul>
+          <li><span class="li-marker">W</span> <strong>Web pages</strong> — Common Crawl, filtered and deduplicated. The largest source (60&ndash;80% of tokens).</li>
+          <li><span class="li-marker">B</span> <strong>Books</strong> — Project Gutenberg, licensed books. Long-form narrative and deep reasoning.</li>
+          <li><span class="li-marker">A</span> <strong>Academic papers</strong> — arXiv, PubMed Central. Scientific rigor.</li>
+          <li><span class="li-marker">C</span> <strong>Code</strong> — GitHub repositories. Logical structure and syntax.</li>
+          <li><span class="li-marker">E</span> <strong>Encyclopedic</strong> — Wikipedia in multiple languages. Factual knowledge.</li>
+          <li><span class="li-marker">F</span> <strong>Forums</strong> — Reddit, Stack Overflow. Conversational patterns.</li>
+          <li><span class="li-marker">M</span> <strong>Multilingual</strong> — Non-English text, 30&ndash;100+ languages.</li>
+        </ul>
+        <p style="margin-top:8px;font-size:13px;color:var(--text-dim);">Data ratios matter — too much web text makes the model chatty; too much code makes it overly literal. Each team has proprietary mixing ratios.</p>
+        <div class="chip-group">
+          <span class="chip chip-teal">Common Crawl</span>
+          <span class="chip chip-teal">Wikipedia</span>
+          <span class="chip chip-teal">GitHub</span>
+          <span class="chip chip-teal">arXiv</span>
+          <span class="chip chip-teal">Reddit</span>
+          <span class="chip chip-teal">Multilingual</span>
+        </div>
       </div>
     </div>
 
-    <div class="card-ring card-ring-teal">
-      <h3><span class="goal-icon">&#9632;</span> What the Process Actually Does</h3>
-      <p>At the mathematical level, pre-training solves one objective: <strong>maximize the log-probability of each token given its preceding context</strong> across the entire corpus.</p>
-      <ul>
-        <li><span class="li-marker">&rarr;</span> <strong>Loss function</strong>: <code style="font-size:12px">L = -&sum; log P(token<sub>i</sub> | token<sub>1</sub>, ..., token<sub>i-1</sub>)</code> averaged over all positions</li>
-        <li><span class="li-marker">&rarr;</span> The transformer architecture processes the entire sequence in parallel (masked self-attention), making training efficient on GPUs/TPUs</li>
-        <li><span class="li-marker">&rarr;</span> Training is <strong>distributed</strong> across hundreds/thousands of accelerators using data parallelism, tensor parallelism, and pipeline parallelism</li>
-        <li><span class="li-marker">&rarr;</span> Optimizer: AdamW with cosine learning rate schedule, warmup, and weight decay. Batch sizes can be millions of tokens.</li>
-        <li><span class="li-marker">&rarr;</span> Training continues for <strong>multiple epochs</strong> over subsets (the entire corpus may be seen 1&ndash;3 times), with the loss steadily decreasing</li>
-        <li><span class="li-marker">&rarr;</span> <strong>Emergent abilities</strong>: as the model scales past certain thresholds (e.g., &gt;6B parameters), in-context learning, chain-of-thought, and world modeling emerge without explicit training</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip chip-teal">Autoregressive</span>
-        <span class="chip chip-teal">Distributed training</span>
-        <span class="chip chip-teal">AdamW</span>
-        <span class="chip chip-teal">Cosine schedule</span>
-        <span class="chip chip-teal">Emergent abilities</span>
+    <div class="tab-panel" data-tab-panel="bp-2">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3><span class="goal-icon">&#9632;</span> What the Process Actually Does</h3>
+        <p>At the mathematical level, pre-training solves one objective: <strong>maximize the log-probability of each token given its preceding context</strong> across the entire corpus.</p>
+        <ul>
+          <li><span class="li-marker">&rarr;</span> <strong>Loss function</strong>: <code style="font-size:12px">L = -&sum; log P(token<sub>i</sub> | token<sub>1</sub>, ..., token<sub>i-1</sub>)</code></li>
+          <li><span class="li-marker">&rarr;</span> Transformer processes the entire sequence in parallel via masked self-attention</li>
+          <li><span class="li-marker">&rarr;</span> Training is <strong>distributed</strong> across hundreds/thousands of accelerators (data + tensor + pipeline parallelism)</li>
+          <li><span class="li-marker">&rarr;</span> Optimizer: AdamW with cosine LR schedule, warmup, weight decay. Batch sizes in millions of tokens.</li>
+          <li><span class="li-marker">&rarr;</span> Multiple epochs (1&ndash;3 passes over the corpus), loss steadily decreases</li>
+          <li><span class="li-marker">&rarr;</span> <strong>Emergent abilities</strong> appear past &gt;6B parameters: in-context learning, chain-of-thought, world modeling</li>
+        </ul>
+        <div class="chip-group">
+          <span class="chip chip-teal">Autoregressive</span>
+          <span class="chip chip-teal">Distributed training</span>
+          <span class="chip chip-teal">AdamW</span>
+          <span class="chip chip-teal">Cosine schedule</span>
+          <span class="chip chip-teal">Emergent abilities</span>
+        </div>
       </div>
     </div>
 
-    <div class="card-ring card-ring-teal">
-      <h3><span class="goal-icon">&#9632;</span> What the Model Learns</h3>
-      <p>The model's weights encode a compressed representation of the training distribution. Through the next-token prediction objective, it implicitly learns:</p>
-      <ul>
-        <li><span class="li-marker">K</span> <strong>World knowledge</strong> — facts, entities, dates, events, scientific concepts. This is what RAG systems try to supplement.</li>
-        <li><span class="li-marker">L</span> <strong>Language competence</strong> — morphology, syntax, semantics, discourse structure, and style. It can produce fluent, grammatical text in dozens of languages.</li>
-        <li><span class="li-marker">R</span> <strong>Reasoning patterns</strong> — logical chaining, analogies, step-by-step reasoning, and common-sense inference learned implicitly from the data.</li>
-        <li><span class="li-marker">C</span> <strong>Cultural &amp; social norms</strong> — conventions, biases, and perspectives present in the training text (both desirable and problematic).</li>
-        <li><span class="li-marker">T</span> <strong>Transferable representations</strong> — the hidden states serve as rich feature extractors that can be adapted to downstream tasks with minimal fine-tuning data.</li>
-      </ul>
-      <p style="margin-top:8px;font-size:13px;color:var(--text-dim);"><strong>Critically, the base model cannot:</strong> follow instructions, hold conversations, refuse harmful requests, cite sources, or produce structured outputs. These require the later SFT and alignment stages.</p>
-      <div class="chip-group">
-        <span class="chip chip-teal">Compressed knowledge</span>
-        <span class="chip chip-teal">Fluent generation</span>
-        <span class="chip chip-teal">Implicit reasoning</span>
-        <span class="chip chip-teal">Not yet aligned</span>
+    <div class="tab-panel" data-tab-panel="bp-3">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3><span class="goal-icon">&#9632;</span> What the Model Learns</h3>
+        <p>The model's weights encode a compressed representation of the training distribution. It implicitly learns:</p>
+        <ul>
+          <li><span class="li-marker">K</span> <strong>World knowledge</strong> — facts, entities, dates, events, scientific concepts.</li>
+          <li><span class="li-marker">L</span> <strong>Language competence</strong> — morphology, syntax, semantics, discourse, style across dozens of languages.</li>
+          <li><span class="li-marker">R</span> <strong>Reasoning patterns</strong> — logical chaining, analogies, step-by-step inference learned implicitly from data.</li>
+          <li><span class="li-marker">C</span> <strong>Cultural &amp; social norms</strong> — conventions and biases present in the training text.</li>
+          <li><span class="li-marker">T</span> <strong>Transferable representations</strong> — hidden states serve as feature extractors adaptable with minimal fine-tuning data.</li>
+        </ul>
+        <p style="margin-top:8px;font-size:13px;color:var(--text-dim);"><strong>Critically, the base model cannot:</strong> follow instructions, hold conversations, refuse harmful requests, cite sources, or produce structured outputs. These require SFT and alignment.</p>
+        <div class="chip-group">
+          <span class="chip chip-teal">Compressed knowledge</span>
+          <span class="chip chip-teal">Fluent generation</span>
+          <span class="chip chip-teal">Implicit reasoning</span>
+          <span class="chip chip-teal">Not yet aligned</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1131,75 +1148,101 @@
     <h2 style="font-size:18px">Key Takeaways — Unsupervised Pre-training</h2>
   </div>
 
-  <div class="grid grid-2 animate animate-delay-3">
-    <div class="card" style="border-left: 3px solid var(--accent-teal); grid-column: 1 / -1;">
-      <h3>Why It Matters <span class="tag">CORE INSIGHT</span></h3>
-      <p>Unsupervised pre-training is the <strong>foundational stage</strong> that produces the base model through <strong>self-supervised learning</strong> — the model labels its own data by predicting the next token. This stage is where the LLM earns its name: doing <strong>language modeling at large scale</strong> (trillions of tokens) is what makes it a <em>Large</em> Language Model.</p>
+  <div class="tab-group animate animate-delay-3" data-tab-group="takeaways">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="tw-0">Why It Matters</button>
+      <button class="tab-btn" data-tab="tw-1">Mechanism</button>
+      <button class="tab-btn" data-tab="tw-2">Scale &amp; Infra</button>
+      <button class="tab-btn" data-tab="tw-3">What It Learns</button>
+      <button class="tab-btn" data-tab="tw-4">Context Window</button>
+      <button class="tab-btn" data-tab="tw-5">Practical Tips</button>
     </div>
-    <div class="card" style="border-left: 3px solid var(--accent-teal);">
-      <h3>Self-Supervised Mechanism</h3>
-      <ul>
-        <li><strong>No human labels needed</strong> — the next word in the sequence <em>is</em> the label</li>
-        <li>Input: "Metformin improves insulin" &rarr; Target: "sensitivity"</li>
-        <li>This is why it's called <strong>self-supervised</strong>: the data generates its own supervision signal</li>
-        <li>Same mechanism is reused in non-instructional fine-tuning (domain adaptation)</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip chip-teal">Self-supervised</span>
-        <span class="chip chip-teal">Next-token prediction</span>
-        <span class="chip chip-teal">No annotation</span>
+
+    <div class="tab-panel active" data-tab-panel="tw-0">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3>Why It Matters <span class="tag">CORE INSIGHT</span></h3>
+        <p>Unsupervised pre-training is the <strong>foundational stage</strong> that produces the base model through self-supervised learning — the model labels its own data by predicting the next token. This stage is where the LLM earns its name: doing <strong>language modeling at large scale</strong> (trillions of tokens) is what makes it a <em>Large</em> Language Model.</p>
       </div>
     </div>
-    <div class="card" style="border-left: 3px solid var(--accent-teal);">
-      <h3>Scale &amp; Infrastructure Barrier</h3>
-      <ul>
-        <li>Requires <strong>internet-scale data</strong>: Common Crawl, Wikipedia, books, code, research papers</li>
-        <li>Demands <strong>massive GPU clusters</strong> — hundreds of thousands of GPU-hours</li>
-        <li>Only large organizations can afford it: Meta, OpenAI, Google, DeepSeek, Mistral</li>
-        <li>This is why <strong>practitioners never train from scratch</strong> — they take existing base models and fine-tune</li>
-      </ul>
-    </div>
-    <div class="card" style="border-left: 3px solid var(--accent-teal);">
-      <h3>What the Model Actually Learns</h3>
-      <ul>
-        <li><strong>General knowledge</strong> about the world (facts, concepts, relationships)</li>
-        <li><strong>Language mechanics</strong>: grammar, syntax, sentence structure</li>
-        <li><strong>Reasoning patterns</strong> implicit in the training text</li>
-        <li>But it does <strong>NOT</strong> learn to follow instructions, hold conversations, or produce structured answers — that requires the next stages</li>
-      </ul>
-    </div>
-    <div class="card" style="border-left: 3px solid var(--accent-teal);">
-      <h3>Context Window &amp; Chunking Strategy</h3>
-      <ul>
-        <li>Each model has a <strong>max context window</strong> (e.g., GPT-3: 2K tokens, GPT-4: 128K tokens)</li>
-        <li>Pre-training data is split into <strong>chunks</strong> that fit within this window</li>
-        <li>Chunking can be done by: paragraph boundaries, semantic meaning, or fixed token length</li>
-        <li>Proper chunking strategy is critical for effective domain adaptation fine-tuning</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip">Context window</span>
-        <span class="chip">Chunk size</span>
-        <span class="chip">Token limits</span>
+
+    <div class="tab-panel" data-tab-panel="tw-1">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3>Unsupervised Mechanism</h3>
+        <ul>
+          <li><strong>No human labels needed</strong> — the next word in the sequence <em>is</em> the label</li>
+          <li>Input: "Metformin improves insulin" &rarr; Target: "sensitivity"</li>
+          <li>The model learns purely from raw text without any annotated dataset</li>
+          <li>Same mechanism is reused in non-instructional fine-tuning (domain adaptation)</li>
+        </ul>
+        <div class="chip-group">
+          <span class="chip chip-teal">Unsupervised</span>
+          <span class="chip chip-teal">Next-token prediction</span>
+          <span class="chip chip-teal">No annotation</span>
+        </div>
       </div>
     </div>
-    <div class="card" style="border-left: 3px solid var(--accent-teal);">
-      <h3>Practical Implications for Fine-tuning</h3>
-      <ul>
-        <li>You <strong>cannot</strong> do this stage yourself — use pre-trained base models from Hugging Face</li>
-        <li>Base model naming: <em>llama-3.1-8B</em> (base) vs <em>llama-3.1-8B-instruct</em> (fine-tuned)</li>
-        <li>Domain adaptation <strong>does</strong> re-use the same next-token prediction mechanism</li>
-        <li>Understanding pre-training helps debug fine-tuning failures (e.g., base model gaps)</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip">Base vs instruct</span>
-        <span class="chip">Transfer learning</span>
-        <span class="chip">Hugging Face hub</span>
+
+    <div class="tab-panel" data-tab-panel="tw-2">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3>Scale &amp; Infrastructure Barrier</h3>
+        <ul>
+          <li>Requires <strong>internet-scale data</strong>: Common Crawl, Wikipedia, books, code, research papers</li>
+          <li>Demands <strong>massive GPU clusters</strong> — hundreds of thousands of GPU-hours</li>
+          <li>Only large organizations can afford it: Meta, OpenAI, Google, DeepSeek, Mistral</li>
+          <li>This is why <strong>practitioners never train from scratch</strong> — they take existing base models and fine-tune</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab-panel="tw-3">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3>What the Model Actually Learns</h3>
+        <ul>
+          <li><strong>General knowledge</strong> about the world (facts, concepts, relationships)</li>
+          <li><strong>Language mechanics</strong>: grammar, syntax, sentence structure</li>
+          <li><strong>Reasoning patterns</strong> implicit in the training text</li>
+          <li>But it does <strong>NOT</strong> learn to follow instructions, hold conversations, or produce structured answers — that requires the next stages</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab-panel="tw-4">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3>Context Window &amp; Chunking Strategy</h3>
+        <ul>
+          <li>Each model has a <strong>max context window</strong> (e.g., GPT-3: 2K tokens, GPT-4: 128K tokens)</li>
+          <li>Pre-training data is split into <strong>chunks</strong> that fit within this window</li>
+          <li>Chunking can be done by: paragraph boundaries, semantic meaning, or fixed token length</li>
+          <li>Proper chunking strategy is critical for effective domain adaptation fine-tuning</li>
+        </ul>
+        <div class="chip-group">
+          <span class="chip">Context window</span>
+          <span class="chip">Chunk size</span>
+          <span class="chip">Token limits</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab-panel="tw-5">
+      <div class="card-ring card-ring-teal" style="border-radius:0 0 12px 12px; border-top:none;">
+        <h3>Practical Implications for Fine-tuning</h3>
+        <ul>
+          <li>You <strong>cannot</strong> do this stage yourself — use pre-trained base models from Hugging Face</li>
+          <li>Base model naming: <em>llama-3.1-8B</em> (base) vs <em>llama-3.1-8B-instruct</em> (fine-tuned)</li>
+          <li>Domain adaptation <strong>does</strong> re-use the same next-token prediction mechanism</li>
+          <li>Understanding pre-training helps debug fine-tuning failures (e.g., base model gaps)</li>
+        </ul>
+        <div class="chip-group">
+          <span class="chip">Base vs instruct</span>
+          <span class="chip">Transfer learning</span>
+          <span class="chip">Hugging Face hub</span>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="section-header animate animate-delay-3">
-    <span class="num">4</span>
+    <span class="num">3</span>
     <div class="dot" style="background:var(--primary)"></div>
     <h2>Stage 2 — Supervised Fine-tuning (SFT)</h2>
   </div>
@@ -1224,20 +1267,136 @@
   </div>
 
   <div class="grid grid-2 animate animate-delay-3">
-    <div class="card-ring card-ring-blue">
+    <div class="card-ring card-ring-blue" style="display:flex; flex-direction:column;">
       <h3><span class="goal-icon">&#9878;</span> Parameter Level <span class="tag">HOW</span></h3>
-      <p><strong>Full fine-tuning</strong> updates all weights — requires multi-GPU. <strong>Partial fine-tuning</strong> trains a subset. Modern LLMs use <strong>PEFT</strong> — train only a small set of extra parameters while the base model stays frozen.</p>
-      <ul>
-        <li><span class="li-marker">L</span> <strong>LoRA</strong> &mdash; Low-rank adapters (A&times;B matrix) added to attention projection layers. The most widely used PEFT method.</li>
-        <li><span class="li-marker">Q</span> <strong>QLoRA</strong> &mdash; LoRA applied on a 4-bit or 8-bit quantized base model. Dramatically reduces memory (fine-tune 65B on a single 48GB GPU).</li>
-        <li><span class="li-marker">D</span> <strong>DoRA</strong> &mdash; Weight-decomposed LoRA. Separates magnitude and direction for better learning fidelity.</li>
-        <li><span class="li-marker">A</span> <strong>Adapter Layers</strong> &mdash; Small bottleneck modules (down-project &rarr; up-project) inserted into each transformer block.</li>
-        <li><span class="li-marker">B</span> <strong>BitFit</strong> &mdash; Only the bias terms of the model are trained. Surprisingly effective for small-domain shifts.</li>
-        <li><span class="li-marker">3</span> <strong>IA&sup3;</strong> &mdash; Infused Adapter by Inhibiting and Amplifying Inner Activations. Learns element-wise scaling vectors on keys, values, and FFN.</li>
-        <li><span class="li-marker">P</span> <strong>Prefix Tuning</strong> &mdash; Learns virtual token embeddings prepended to the keys/values in each attention layer.</li>
-        <li><span class="li-marker">S</span> <strong>Prompt Tuning</strong> &mdash; Learns soft prompt embeddings prepended to the input tokens (only at the input layer, not per-layer).</li>
-      </ul>
-      <div class="chip-group">
+      <p style="margin-bottom:12px;"><strong>Full fine-tuning</strong> updates all weights — requires multi-GPU. <strong>Partial fine-tuning</strong> trains a subset. Modern LLMs use <strong>PEFT</strong> — train only a small set of extra parameters while the base model stays frozen.</p>
+
+      <div class="tab-group" data-tab-group="peft" style="flex:1; display:flex; flex-direction:column;">
+        <div class="tab-bar" style="border-bottom-color:var(--border);">
+          <button class="tab-btn active" data-tab="peft-0">LoRA</button>
+          <button class="tab-btn" data-tab="peft-1">QLoRA</button>
+          <button class="tab-btn" data-tab="peft-2">DoRA</button>
+          <button class="tab-btn" data-tab="peft-3">Adapter</button>
+          <button class="tab-btn" data-tab="peft-4">BitFit</button>
+          <button class="tab-btn" data-tab="peft-5">IA&#179;</button>
+          <button class="tab-btn" data-tab="peft-6">Prefix</button>
+          <button class="tab-btn" data-tab="peft-7">Prompt</button>
+        </div>
+
+        <!-- LoRA -->
+        <div class="tab-panel active" data-tab-panel="peft-0" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Efficient adaptation</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Universal standard</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Rank selection matters</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Injects trainable low-rank decomposition matrices <em>A</em> and <em>B</em> into attention projection layers (Q, K, V, O). The original weights stay frozen. Forward pass: <code style="font-size:12px;">h = W<sub>0</sub>x + (B&middot;A)x</code>. Rank <em>r</em> controls expressiveness vs parameter count.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> De facto standard PEFT method. Works across all model sizes and tasks. Adapters are portable (few MB). Mergeable into base weights at inference (zero overhead).</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Sensitivity to rank <em>r</em> and target module selection. Too low rank limits capacity; too high defeats memory saving. Requires tuning alpha, dropout, and which layers to target.</p>
+          </div>
+        </div>
+
+        <!-- QLoRA -->
+        <div class="tab-panel" data-tab-panel="peft-1" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Memory-efficient fine-tuning</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: 65B on 1 GPU</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Quantization noise</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Applies standard LoRA on top of a <strong>4-bit or 8-bit quantized</strong> base model. The base weights are stored in NF4 (normalized float 4) precision and dequantized on-the-fly during forward/backward. LoRA adapters remain in full precision (FP16/BF16).</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Fine-tune a 65B model on a single 48GB GPU. 4-bit quantization cuts memory by ~4x vs FP16. LoRA adapters stay high-precision, so quality loss is minimal (within 1-2% of full LoRA).</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Quantization introduces slight numerical noise. Training is marginally slower due to on-the-fly dequantization. Double quantization (DQ) adds complexity. Not all hardware supports NF4 efficiently.</p>
+          </div>
+        </div>
+
+        <!-- DoRA -->
+        <div class="tab-panel" data-tab-panel="peft-2" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Better fidelity than LoRA</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Learns direction + magnitude</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Slightly more params</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Weight-Decomposed Low-Rank Adaptation. Decomposes the weight update into <strong>magnitude</strong> (a learnable scalar vector <em>m</em>) and <strong>direction</strong> (a LoRA-style low-rank update). Formally: <code style="font-size:12px;">W' = m &middot; (W<sub>0</sub> + &Delta;W) / ||W<sub>0</sub> + &Delta;W||</code>. The magnitude vector <em>m</em> is learned independently.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Consistently outperforms LoRA on reasoning and knowledge-intensive tasks. Learns both the direction and scale of weight updates, mimicking full fine-tuning more closely. Minimal parameter overhead (only d extra scalars).</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Slightly more compute per step due to normalization. Still relatively new — fewer community recipes and ablation studies compared to LoRA.</p>
+          </div>
+        </div>
+
+        <!-- Adapter Layers -->
+        <div class="tab-panel" data-tab-panel="peft-3" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Insert &amp; tune bottleneck layers</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Parallelizable</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Inference latency</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Small trainable bottleneck modules are inserted into each transformer block, typically after the attention or FFN sub-layer. Each adapter consists of a <strong>down-projection</strong> (d &rarr; r) and an <strong>up-projection</strong> (r &rarr; d) with a non-linearity in between. The original weights are frozen.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Pioneered the PEFT concept. Can be placed in parallel or sequentially. Bottleneck structure forces information compression. Some adapter variants (e.g., Parallel Adapter) add no sequential depth.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Adds inference latency (extra forward pass through adapter layers). Less parameter-efficient than LoRA for the same capacity. Largely superseded by LoRA in practice.</p>
+          </div>
+        </div>
+
+        <!-- BitFit -->
+        <div class="tab-panel" data-tab-panel="peft-4" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Minimal-parameter tuning</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Tiny footprint (0.1%)</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Limited capacity</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Only the <strong>bias terms</strong> (about 0.1% of total parameters) of the model are trainable. All weight matrices are frozen. The bias vector in each Linear and LayerNorm layer is updated via standard gradient descent.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Extremely lightweight — memory and compute overhead is negligible. Surprisingly effective for small domain shifts (e.g., adapting to a specific writing style or genre). Fastest PEFT method to train.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Limited capacity for complex task adaptation. Cannot learn new knowledge or substantially alter model behavior. Only works well when the base model already has relevant capabilities.</p>
+          </div>
+        </div>
+
+        <!-- IA³ -->
+        <div class="tab-panel" data-tab-panel="peft-5" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Rescale activations</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Extremely few params</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Limited expressiveness</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Infused Adapter by Inhibiting and Amplifying Inner Activations. Learns <strong>element-wise scaling vectors</strong> <em>l<sub>k</sub></em>, <em>l<sub>v</sub></em>, <em>l<sub>f</sub></em> that rescale the keys, values, and FFN activations respectively. Each vector has the same dimension as the corresponding activation. Formally: <code style="font-size:12px;">K' = l<sub>k</sub> &odot; K</code>, <code style="font-size:12px;">V' = l<sub>v</sub> &odot; V</code>.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Parameter count comparable to BitFit (often even fewer). Conceptually simple — just learns which activations to amplify or suppress. Works well for classification-style tasks.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Does not add new parameters or computation paths — only re-weights existing activations. Limited expressiveness for generative tasks requiring new knowledge or behaviors. Rarely used for LLM chat fine-tuning.</p>
+          </div>
+        </div>
+
+        <!-- Prefix Tuning -->
+        <div class="tab-panel" data-tab-panel="peft-6" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Condition via virtual tokens</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Per-layer conditioning</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Shrinks context window</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Prepends a set of <strong>learnable virtual token embeddings</strong> to the <em>keys and values</em> of each attention layer. Unlike prompt tuning (input layer only), prefix tuning modifies attention at <em>every layer</em>. The prefix tokens attend to all real tokens and vice versa.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> More expressive than prompt tuning because every layer is conditioned. Virtual tokens can encode task-specific behavior. Works well for generation tasks (summarization, translation).</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Each prefix token consumes space in the effective context window (prefix length + real tokens must fit within max sequence length). Harder to optimize — prefix parameters can be unstable early in training. Slightly more parameters than prompt tuning.</p>
+          </div>
+        </div>
+
+        <!-- Prompt Tuning -->
+        <div class="tab-panel" data-tab-panel="peft-7" style="flex:1;">
+          <div style="padding:14px 0;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Soft prompt conditioning</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: Simplest PEFT</span>
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Input layer only</span>
+            </div>
+            <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Prepends a sequence of <strong>learnable soft prompt embeddings</strong> to the <em>input embedding layer only</em>. Unlike prefix tuning (per-layer), the soft prompt is concatenated with the input tokens at the very first layer, then processed normally through all transformer layers.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Simplest PEFT method conceptually. Very few parameters (soft prompt length &times; embedding dim). Soft prompts are portable and can be shared/combined. No inference overhead if pre-computed.</p>
+            <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Only the input layer is conditioned — later layers are not directly modified. Less expressive than prefix tuning for complex tasks. Soft prompt length consumes context window space. Performance degrades if prompt length is too short.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chip-group" style="margin-top:auto;">
         <span class="chip chip-blue">LoRA is the default choice</span>
         <span class="chip chip-blue">QLoRA for memory-constrained</span>
         <span class="chip chip-blue">Single GPU feasible</span>
@@ -1264,11 +1423,25 @@
         <span class="chip chip-blue">Synthetic data via LLM</span>
         <span class="chip chip-blue">Alpaca format</span>
       </div>
+
+      <div style="margin-top:14px; padding:14px; border-radius:8px; background:var(--secondary-dim); border-left:3px solid var(--secondary);">
+        <div style="font-size:12px; font-weight:700; color:var(--secondary); margin-bottom:6px;">Chronological Order — The 4-Step Pipeline</div>
+        <div style="display:flex; align-items:center; gap:3px; flex-wrap:wrap; margin-bottom:8px;">
+          <span style="display:inline-flex; align-items:center; gap:4px; background:var(--accent-teal); color:#fff; padding:3px 10px; border-radius:4px; font-size:11px; font-family:var(--font-mono); font-weight:600;">1 &nbsp; Pre-training</span>
+          <span style="color:var(--text-dim); font-size:14px;">&rarr;</span>
+          <span style="display:inline-flex; align-items:center; gap:4px; background:var(--accent-teal); color:#fff; padding:3px 10px; border-radius:4px; font-size:11px; font-family:var(--font-mono); font-weight:600;">2 &nbsp; Domain FT</span>
+          <span style="color:var(--text-dim); font-size:14px;">&rarr;</span>
+          <span style="display:inline-flex; align-items:center; gap:4px; background:var(--primary); color:#fff; padding:3px 10px; border-radius:4px; font-size:11px; font-family:var(--font-mono); font-weight:600;">3 &nbsp; Instruction FT</span>
+          <span style="color:var(--text-dim); font-size:14px;">&rarr;</span>
+          <span style="display:inline-flex; align-items:center; gap:4px; background:var(--accent-rose); color:#fff; padding:3px 10px; border-radius:4px; font-size:11px; font-family:var(--font-mono); font-weight:600;">4 &nbsp; Alignment (DPO)</span>
+        </div>
+        <p style="font-size:12px; line-height:1.55; color:var(--text); margin:0;"><strong>Why step 2 before step 3?</strong> If you skip domain FT, the model doesn't understand your domain's vocabulary — it would be answering questions about terms it can't grasp. The instructor calls this out explicitly: <em>"this is not a good practice — directly to teach your model on input and output."</em> The recommended strategy: non-instructional FT first to <strong>embed domain terminology</strong> into the weights, then instructional FT to <strong>teach conversation</strong> on top of that foundation. Vocabulary immersion before conversation class.</p>
+      </div>
     </div>
   </div>
 
   <div class="section-header animate animate-delay-4">
-    <span class="num">5</span>
+    <span class="num">4</span>
     <div class="dot" style="background:var(--accent-rose)"></div>
     <h2>Stage 3 — Preference Alignment</h2>
   </div>
@@ -1281,78 +1454,158 @@
     </div>
   </div>
 
-  <div class="grid grid-3 animate animate-delay-4">
-    <div class="card-ring card-ring-rose">
-      <h3><span class="goal-icon">&#9881;</span> RLHF</h3>
-      <p><strong>Reinforcement Learning from Human Feedback.</strong> A multi-step pipeline:</p>
-      <ul>
-        <li><span class="li-marker">1</span> Collect human rankings of multiple model outputs for the same prompt</li>
-        <li><span class="li-marker">2</span> Train a <strong>reward model</strong> that predicts which output humans prefer</li>
-        <li><span class="li-marker">3</span> Use <strong>PPO</strong> (Proximal Policy Optimization) to update the LLM to maximize the reward model's score while staying close to the original SFT model (KL penalty)</li>
-      </ul>
-      <p style="margin-top:8px;font-size:13px;color:var(--text-dim)">Pioneered by OpenAI's <strong>InstructGPT</strong> paper. Complex to train — requires 4 models (policy, reference, reward, value) in memory simultaneously.</p>
-      <div class="chip-group">
-        <span class="chip chip-rose">PPO algorithm</span>
-        <span class="chip chip-rose">Reward model</span>
-        <span class="chip chip-rose">Human annotation</span>
-        <span class="chip chip-rose">InstructGPT</span>
+  <div class="card-ring card-ring-rose animate animate-delay-4" style="padding:0;">
+    <div class="tab-group" data-tab-group="alignment" style="display:flex; flex-direction:column;">
+      <div class="tab-bar" style="border-bottom-color:var(--border); padding:6px 6px 0;">
+        <button class="tab-btn active" data-tab="align-0">RLHF</button>
+        <button class="tab-btn" data-tab="align-1">RLAIF</button>
+        <button class="tab-btn" data-tab="align-2">DPO</button>
       </div>
-    </div>
-    <div class="card-ring card-ring-rose">
-      <h3><span class="goal-icon">&#9881;</span> RLAIF</h3>
-      <p><strong>Reinforcement Learning from AI Feedback.</strong> Same RL framework as RLHF, but the preference labels are generated by an <strong>AI judge</strong> (e.g., a larger LLM) instead of human annotators.</p>
-      <ul>
-        <li><span class="li-marker">&rarr;</span> Much more <strong>scalable</strong> — AI can label millions of preferences at low cost</li>
-        <li><span class="li-marker">&rarr;</span> Introduced by <strong>Anthropic</strong> in their "Constitutional AI" research</li>
-        <li><span class="li-marker">&rarr;</span> Still uses PPO/reinforcement learning — only the annotation source changes</li>
-        <li><span class="li-marker">&rarr;</span> Trade-off: may inherit the AI judge's own biases</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip chip-rose">Scalable</span>
-        <span class="chip chip-rose">AI-as-judge</span>
-        <span class="chip chip-rose">Constitutional AI</span>
-        <span class="chip chip-rose">Anthropic</span>
-      </div>
-    </div>
-    <div class="card-ring card-ring-rose">
-      <h3><span class="goal-icon">&#9881;</span> DPO</h3>
-      <p><strong>Direct Preference Optimization.</strong> The current state-of-the-art. A <strong>supervised</strong> approach — no reward model, no reinforcement learning loop, just a clever loss function.</p>
-      <ul>
-        <li><span class="li-marker">&rarr;</span> Loss: <code style="font-size:12px">&sigma;(&beta; &middot; log(&pi;&theta;(y<sup>+</sup>|x) / &pi;ref(y<sup>+</sup>|x)) - log(&pi;&theta;(y<sup>-</sup>|x) / &pi;ref(y<sup>-</sup>|x)))</code></li>
-        <li><span class="li-marker">&rarr;</span> Intuition: maximize the gap between how much the model prefers the chosen response vs the rejected one, <em>relative to the reference (SFT) model</em></li>
-        <li><span class="li-marker">&rarr;</span> <strong>&beta; (beta)</strong> controls how strongly the model must favor chosen over rejected</li>
-        <li><span class="li-marker">&rarr;</span> Much simpler to train — no reward model, no PPO instability</li>
-      </ul>
-      <div class="chip-group">
-        <span class="chip chip-rose">Stanford 2024</span>
-        <span class="chip chip-rose">No reward model</span>
-        <span class="chip chip-rose">Supervised loss</span>
-        <span class="chip chip-rose">Industry standard</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- ===== ALIGNMENT COMPARISON TABLE ===== -->
-  <div style="margin-top:8px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:1px; background:var(--border); border-radius:10px; overflow:hidden;" class="animate animate-delay-4">
-    <div style="background:var(--surface); padding:14px 16px; text-align:center;">
-      <div style="font-size:11px; font-weight:600; font-family:var(--font-mono); color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em;">RLHF</div>
-      <div style="font-size:24px; font-weight:700; color:var(--accent-rose); margin:4px 0;">4</div>
-      <div style="font-size:11px; color:var(--text-dim);">models in memory</div>
-    </div>
-    <div style="background:var(--surface); padding:14px 16px; text-align:center;">
-      <div style="font-size:11px; font-weight:600; font-family:var(--font-mono); color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em;">RLAIF</div>
-      <div style="font-size:24px; font-weight:700; color:var(--accent-rose); margin:4px 0;">4</div>
-      <div style="font-size:11px; color:var(--text-dim);">models in memory</div>
-    </div>
-    <div style="background:var(--surface); padding:14px 16px; text-align:center;">
-      <div style="font-size:11px; font-weight:600; font-family:var(--font-mono); color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em;">DPO</div>
-      <div style="font-size:24px; font-weight:700; color:var(--accent-emerald); margin:4px 0;">2</div>
-      <div style="font-size:11px; color:var(--text-dim);">models in memory</div>
+      <!-- RLHF -->
+      <div class="tab-panel active" data-tab-panel="align-0" style="flex:1;">
+        <div style="padding:18px 20px;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Human-aligned RL</span>
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: High quality signal</span>
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Complex, 4 models</span>
+          </div>
+          <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Three-step pipeline: (1) Collect human rankings of multiple model outputs for the same prompt. (2) Train a <strong>reward model</strong> that predicts which output humans prefer. (3) Use <strong>PPO</strong> (Proximal Policy Optimization) to update the LLM to maximize the reward model's score while staying close to the original SFT model via a KL penalty.</p>
+          <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Human feedback provides high-quality preference signal. The reward model can generalize to unseen prompts. Pioneered by OpenAI's <strong>InstructGPT</strong> and proven at scale.</p>
+          <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Complex to train — requires 4 models (policy, reference, reward, value) in memory simultaneously. PPO is notoriously unstable. Human annotation is expensive and hard to scale. The reward model can be hacked (reward hacking).</p>
+          <div class="chip-group"><span class="chip chip-rose">PPO algorithm</span><span class="chip chip-rose">Reward model</span><span class="chip chip-rose">Human annotation</span><span class="chip chip-rose">InstructGPT</span></div>
+        </div>
+      </div>
+
+      <!-- RLAIF -->
+      <div class="tab-panel" data-tab-panel="align-1" style="flex:1;">
+        <div style="padding:18px 20px;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Scalable preferences</span>
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: AI labels millions</span>
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: AI judge bias</span>
+          </div>
+          <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> Same RL framework as RLHF (reward model + PPO), but the preference labels are generated by an <strong>AI judge</strong> (e.g., a larger LLM like Claude or GPT-4) instead of human annotators. The AI is given a rubric (e.g., "constitutional principles") and asked to rank which of two model outputs is better.</p>
+          <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Much more scalable — AI can label millions of preferences at a fraction of human cost. Introduced by <strong>Anthropic</strong> in their "Constitutional AI" paper. Enables iterative alignment during training without hiring annotators.</p>
+          <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> May inherit the AI judge's own biases and blind spots. If the judge is a weaker model, the signal is noisy. Still uses PPO with all its complexity (reward model, 4 models in memory, instability).</p>
+          <div class="chip-group"><span class="chip chip-rose">Scalable</span><span class="chip chip-rose">AI-as-judge</span><span class="chip chip-rose">Constitutional AI</span><span class="chip chip-rose">Anthropic</span></div>
+        </div>
+      </div>
+
+      <!-- DPO -->
+      <div class="tab-panel" data-tab-panel="align-2" style="flex:1;">
+        <div style="padding:18px 20px;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 10px; border-radius:4px;">Goal: Simplified alignment</span>
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 10px; border-radius:4px;">Pro: No reward model</span>
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; font-family:var(--font-mono); background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 10px; border-radius:4px;">Con: Needs quality pairs</span>
+          </div>
+          <p style="font-size:13px; line-height:1.55;"><strong>Mechanism:</strong> The current state-of-the-art. A <strong>supervised</strong> approach — no reward model, no reinforcement learning loop, just a clever loss function. The loss maximizes the gap between the model's likelihood of the chosen vs rejected response, relative to the reference (SFT) model:</p>
+          <p style="font-size:12px; line-height:1.5; margin:8px 0; padding:8px 12px; background:var(--surface-alt); border-radius:6px; font-family:var(--font-mono); color:var(--text);">&calL; = &minus; &Eopf;<sub>(x,y<sup>+</sup>,y<sup>&minus;</sup>)</sub> log &sigma;( &beta; log &pi;<sub>&theta;</sub>(y<sup>+</sup>|x)/&pi;<sub>ref</sub>(y<sup>+</sup>|x) &minus; &beta; log &pi;<sub>&theta;</sub>(y<sup>&minus;</sup>|x)/&pi;<sub>ref</sub>(y<sup>&minus;</sup>|x) )</p>
+          <p style="font-size:13px;"><strong>&beta; (beta)</strong> controls how strongly the model must favor chosen over rejected. Higher &beta; = stronger separation.</p>
+          <p style="font-size:13px; margin-top:6px;"><strong>Pros:</strong> Much simpler to train — only 2 models in memory (policy + reference), no reward model, no PPO instability. Directly optimizes the preference objective. Converges faster and more stably than RLHF. Industry standard since 2024.</p>
+          <p style="font-size:13px; margin-top:6px;"><strong>Cons:</strong> Requires high-quality preference pairs — noisy labels degrade performance. Does not explore new behaviors (the way RL does). The reference model must be frozen throughout training.</p>
+          <div class="chip-group"><span class="chip chip-rose">Stanford 2024</span><span class="chip chip-rose">No reward model</span><span class="chip chip-rose">Supervised loss</span><span class="chip chip-rose">Industry standard</span></div>
+
+          <!-- Mini comparison strip -->
+          <div style="margin-top:14px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:1px; background:var(--border); border-radius:6px; overflow:hidden;">
+            <div style="background:var(--surface-alt); padding:10px; text-align:center;">
+              <div style="font-size:9px; font-weight:600; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim);">RLHF</div>
+              <div style="font-size:20px; font-weight:700; color:var(--accent-rose); margin:2px 0;">4</div>
+              <div style="font-size:10px; color:var(--text-dim);">models in memory</div>
+            </div>
+            <div style="background:var(--surface-alt); padding:10px; text-align:center;">
+              <div style="font-size:9px; font-weight:600; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim);">RLAIF</div>
+              <div style="font-size:20px; font-weight:700; color:var(--accent-rose); margin:2px 0;">4</div>
+              <div style="font-size:10px; color:var(--text-dim);">models in memory</div>
+            </div>
+            <div style="background:var(--surface-alt); padding:10px; text-align:center;">
+              <div style="font-size:9px; font-weight:600; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim);">DPO</div>
+              <div style="font-size:20px; font-weight:700; color:var(--accent-emerald); margin:2px 0;">2</div>
+              <div style="font-size:10px; color:var(--text-dim);">models in memory</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="callout animate animate-delay-4">
     <strong>&#9432; LoRA Stacking Pitfall:</strong> When training sequentially through these stages (base &rarr; domain FT &rarr; instruction FT &rarr; DPO), don't stack LoRA adapters. Use <code>merge_and_unload()</code> to merge weights before applying a new LoRA patch. Stacking LoRA layers causes unstable loss and degraded quality.
+  </div>
+
+  <div class="section-header animate animate-delay-5">
+    <span class="num">5</span>
+    <div class="dot" style="background:var(--text-dim)"></div>
+    <h2>Model Families — Training Breakdown</h2>
+  </div>
+
+  <div class="grid grid-2 animate animate-delay-5">
+    <div class="card-ring card-ring-amber">
+      <h3><span class="goal-icon">M</span> Meta &mdash; Llama</h3>
+      <p><strong>Pre-training</strong> on trillions of tokens (Common Crawl, books, code) &rarr; <strong>SFT</strong> (instruction fine-tuning on QA data) &rarr; <strong>RLHF / DPO</strong> for alignment. Meta releases both <em>base</em> and <em>chat/instruct</em> variants openly on Hugging Face.</p>
+      <div style="margin-top:8px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">Base</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--primary-dim); color:var(--primary); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">SFT</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">RLHF</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono); font-weight:600;">Llama-3-Chat</span>
+      </div>
+    </div>
+
+    <div class="card-ring card-ring-amber">
+      <h3><span class="goal-icon">G</span> OpenAI &mdash; GPT / InstructGPT</h3>
+      <p><strong>GPT-3 (2020)</strong> was pre-trained only &rarr; <strong>InstructGPT (2021)</strong> added SFT (on human-written prompts + responses) then RLHF via PPO &rarr; <strong>GPT-3.5 / GPT-4</strong> heavily aligned with RLHF plus safety filters and constitutional guardrails. Closed source — API-only access, no base model release.</p>
+      <div style="margin-top:8px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">GPT-3 Base</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--primary-dim); color:var(--primary); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">InstructGPT SFT</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">RLHF + Safety</span>
+      </div>
+    </div>
+
+    <div class="card-ring card-ring-amber">
+      <h3><span class="goal-icon">M</span> Mistral AI</h3>
+      <p><strong>Mistral 7B (2023)</strong> base model &rarr; <strong>Mixtral 8x7B</strong> mixture-of-experts base &rarr; <strong>instruction versions</strong> via SFT &rarr; some variants further aligned with <strong>RLHF / DPO</strong>. Open weight release — both base and instruct models available on Hugging Face.</p>
+      <div style="margin-top:8px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">7B Base</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--primary-dim); color:var(--primary); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">MoE Base</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--primary-dim); color:var(--primary); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">Instruct SFT</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">RLHF/DPO</span>
+      </div>
+    </div>
+
+    <div class="card-ring card-ring-amber">
+      <h3><span class="goal-icon">D</span> DeepSeek</h3>
+      <p><strong>DeepSeek Base</strong> (pre-trained on massive Chinese + English corpus) &rarr; <strong>DeepSeek Code</strong> (SFT on code data) &rarr; <strong>DeepSeek R1</strong> (aligned with RLHF/human feedback for reasoning). China's major open-source push — full weights available on Hugging Face.</p>
+      <div style="margin-top:8px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">Base</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--primary-dim); color:var(--primary); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">Code SFT</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">R1 Alignment</span>
+      </div>
+    </div>
+
+    <div class="card-ring card-ring-amber" style="grid-column:1/-1;">
+      <h3><span class="goal-icon">G</span> Google &mdash; Gemini</h3>
+      <p>Follows the same three-stage pipeline: <strong>pre-training</strong> on Google's massive data, <strong>SFT</strong> for instruction-following, and <strong>RLHF / multi-modal alignment</strong>. Cloud-based API — no open weights. Gemini models are also aligned for safety across text, vision, and audio modalities.</p>
+      <div style="margin-top:8px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+        <span style="background:var(--accent-teal-dim); color:var(--accent-teal); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">Pre-training</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--primary-dim); color:var(--primary); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">SFT</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-rose-dim); color:var(--accent-rose); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono);">RLHF + Safety</span>
+        <span style="color:var(--text-dim); font-size:12px;">&rarr;</span>
+        <span style="background:var(--accent-emerald-dim); color:var(--accent-emerald); padding:2px 8px; border-radius:4px; font-size:10px; font-family:var(--font-mono); font-weight:600;">Gemini</span>
+      </div>
+    </div>
   </div>
 
   <div class="section-header animate animate-delay-5">
@@ -1465,9 +1718,25 @@
 </div>
 
 <script>
-  // Animation-only helper: staggered fade-in is handled by CSS .animate and .animate-delay-*
-  // No Mermaid needed — the architectural blueprint is pure HTML/CSS
-  console.log('LLM Fine-Tuning Topic Map loaded. Blueprint zone map v1.0');
+  (function() {
+    // Tab switching
+    document.querySelectorAll('.tab-group').forEach(function(group) {
+      var buttons = group.querySelectorAll('.tab-btn');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var tabId = btn.getAttribute('data-tab');
+          // Deactivate all
+          group.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+          group.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+          // Activate clicked
+          btn.classList.add('active');
+          var panel = group.querySelector('[data-tab-panel="' + tabId + '"]');
+          if (panel) panel.classList.add('active');
+        });
+      });
+    });
+    console.log('LLM Fine-Tuning Topic Map loaded. Tabs initialized.');
+  })();
 </script>
 
 </body>
