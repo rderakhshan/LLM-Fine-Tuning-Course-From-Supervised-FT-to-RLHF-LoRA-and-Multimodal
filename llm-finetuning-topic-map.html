@@ -483,6 +483,296 @@
     flex-shrink: 0;
   }
   .grid-full { grid-column: 1 / -1; }
+  /* ===== ARCHITECTURAL BLUEPRINT ===== */
+  .blueprint {
+    position: relative;
+    background: #f0f4f8;
+    background-image:
+      linear-gradient(rgba(30, 58, 95, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 58, 95, 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border: 2px solid #1e3a5f;
+    border-radius: 4px;
+    padding: 32px 28px 28px;
+    margin-bottom: 24px;
+    min-height: 520px;
+    font-family: var(--font-mono);
+  }
+  @media (prefers-color-scheme: dark) {
+    .blueprint {
+      background: #0f172a;
+      background-image:
+        linear-gradient(rgba(96, 165, 250, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+      border-color: #3b82f6;
+    }
+  }
+  .blueprint .bp-compass {
+    position: absolute;
+    top: 8px; left: 12px;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .blueprint .bp-compass span { font-size: 14px; }
+  .blueprint .bp-scale {
+    position: absolute;
+    bottom: 8px; right: 12px;
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+  }
+  .bp-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(200px, 280px) 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+  /* ZONES */
+  .bp-zone {
+    position: relative;
+    padding: 14px 16px;
+    margin: 8px;
+    background: rgba(255,255,255,0.75);
+    border: 1.5px solid #1e3a5f;
+    backdrop-filter: blur(2px);
+  }
+  @media (prefers-color-scheme: dark) {
+    .bp-zone {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: #3b82f6;
+    }
+  }
+  .bp-zone-double {
+    border-width: 3px;
+    border-style: double;
+  }
+  .bp-zone-dashed {
+    border-style: dashed;
+    border-width: 1.5px;
+  }
+  .bp-zone-core {
+    position: relative;
+    padding: 20px 18px;
+    margin: 8px;
+    background: rgba(255,255,255,0.9);
+    border: 3px double #1e3a5f;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 130px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .bp-zone-core {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: #60a5fa;
+    }
+  }
+  .bp-zone-core .bp-core-icon {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .bp-zone-core .bp-core-sub {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .bp-zone-core .bp-core-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 10px;
+    font-size: 9px;
+    background: var(--primary-dim);
+    color: var(--primary);
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .bp-zone .bp-zone-ribbon {
+    position: absolute;
+    top: -1px; left: -1px;
+    padding: 2px 10px 2px 8px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 0 0 4px 0;
+  }
+  .bp-zone-teal .bp-zone-ribbon { background: var(--accent-teal); }
+  .bp-zone-blue .bp-zone-ribbon { background: var(--primary); }
+  .bp-zone-rose .bp-zone-ribbon { background: var(--accent-rose); }
+  .bp-zone-amber .bp-zone-ribbon { background: var(--secondary); }
+  .bp-zone-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+  .bp-zone-teal .bp-zone-title { color: var(--accent-teal); }
+  .bp-zone-blue .bp-zone-title { color: var(--primary); }
+  .bp-zone-rose .bp-zone-title { color: var(--accent-rose); }
+  .bp-zone-amber .bp-zone-title { color: var(--secondary); }
+  .bp-zone p { font-size: 10px; color: var(--text-dim); line-height: 1.5; margin: 0; }
+  .bp-zone ul { list-style: none; margin: 4px 0 0; padding: 0; }
+  .bp-zone ul li {
+    font-size: 9.5px;
+    color: var(--text);
+    padding: 1px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .bp-zone ul li::before { content: '\25B8'; color: var(--text-dim); font-size: 9px; flex-shrink: 0; }
+  .bp-zone .bp-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 5px;
+  }
+  .bp-zone .bp-chip {
+    padding: 1px 6px;
+    font-size: 8px;
+    font-family: var(--font-mono);
+    border-radius: 2px;
+    background: rgba(0,0,0,0.04);
+    color: var(--text-dim);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    .bp-zone .bp-chip { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.08); }
+  }
+  /* GRID PLACEMENT */
+  .bp-north { grid-column: 2; grid-row: 1; justify-self: stretch; align-self: start; }
+  .bp-west  { grid-column: 1; grid-row: 2; justify-self: stretch; align-self: center; }
+  .bp-core  { grid-column: 2; grid-row: 2; justify-self: stretch; align-self: center; }
+  .bp-east  { grid-column: 3; grid-row: 2; justify-self: stretch; align-self: center; }
+  .bp-south { grid-column: 2; grid-row: 3; justify-self: stretch; align-self: end; }
+  /* Outer capsule row */
+  .bp-outer {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1.5px dashed rgba(30,58,95,0.25);
+    justify-content: center;
+  }
+  @media (prefers-color-scheme: dark) { .bp-outer { border-top-color: rgba(96,165,250,0.2); } }
+  .bp-outer-item {
+    flex: 1;
+    max-width: 240px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.5);
+    border: 1px dashed rgba(30,58,95,0.3);
+    border-radius: 3px;
+    text-align: center;
+  }
+  @media (prefers-color-scheme: dark) {
+    .bp-outer-item { background: rgba(15,23,42,0.5); border-color: rgba(96,165,250,0.2); }
+  }
+  .bp-outer-item .bp-outer-label {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+  }
+  .bp-outer-item p {
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  /* CONNECTOR LINES (via pseudo-elements on the center zone) */
+  .bp-connector {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .bp-connector-ns {
+    top: 0; left: 50%; bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--primary) 0px,
+      var(--primary) 6px,
+      transparent 6px,
+      transparent 10px
+    );
+    opacity: 0.3;
+  }
+  .bp-connector-we {
+    top: 50%; left: 0; right: 0;
+    height: 2px;
+    transform: translateY(-50%);
+    background: repeating-linear-gradient(
+      to right,
+      var(--primary) 0px,
+      var(--primary) 6px,
+      transparent 6px,
+      transparent 10px
+    );
+    opacity: 0.3;
+  }
+  /* Arrow heads */
+  .bp-arrow {
+    position: absolute;
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid var(--primary);
+    opacity: 0.3;
+    z-index: 0;
+  }
+  .bp-arrow-n { bottom: -6px; left: 50%; transform: translateX(-50%); }
+  .bp-arrow-s { top: -6px; left: 50%; transform: translateX(-50%) rotate(180deg); }
+  .bp-arrow-w { right: -6px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+  .bp-arrow-e { left: -6px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+  /* TITLE BLOCK (architectural drawing title) */
+  .bp-title-block {
+    position: absolute;
+    bottom: 8px; left: 12px;
+    border: 1px solid rgba(30,58,95,0.2);
+    padding: 4px 10px;
+    font-size: 7px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    background: rgba(255,255,255,0.5);
+    border-radius: 2px;
+  }
+  @media (prefers-color-scheme: dark) { .bp-title-block { border-color: rgba(96,165,250,0.15); background: rgba(15,23,42,0.5); } }
+  .bp-title-block strong { font-weight: 600; }
+  @media (max-width: 700px) {
+    .bp-grid { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto auto; }
+    .bp-north { grid-column: 1; grid-row: 1; }
+    .bp-west  { grid-column: 1; grid-row: 2; }
+    .bp-core  { grid-column: 1; grid-row: 3; }
+    .bp-east  { grid-column: 1; grid-row: 4; }
+    .bp-south { grid-column: 1; grid-row: 5; }
+    .bp-connector-ns, .bp-connector-we,
+    .bp-arrow { display: none; }
+    .bp-outer { flex-direction: column; align-items: stretch; }
+    .bp-outer-item { max-width: none; }
+  }
   /* ===== PIPELINE FLOW (connector arrows between cards) ===== */
   .pipeline-flow {
     display: flex;
@@ -550,65 +840,115 @@
     <span class="badge">14+ Topics &centerdot; 3 Pipeline Stages &centerdot; 8+ PEFT Techniques</span>
   </div>
 
-  <!-- ===== MERMAID MINDMAP ===== -->
+  <!-- ===== ARCHITECTURAL BLUEPRINT ===== -->
   <div class="section-header animate animate-delay-1">
     <span class="num">1</span>
     <div class="dot" style="background:var(--primary)"></div>
-    <h2>Topic Hierarchy</h2>
+    <h2>Architectural Zone Map</h2>
   </div>
 
-  <div class="diagram-shell animate animate-delay-1">
-    <div class="mermaid-wrap">
-      <div class="zoom-controls">
-        <button data-action="zoom-in" title="Zoom in">+</button>
-        <button data-action="zoom-out" title="Zoom out">&minus;</button>
-        <button data-action="zoom-fit" title="Fit">&square;</button>
-        <button data-action="zoom-one" title="1:1">1:1</button>
-        <button data-action="zoom-expand" title="Open in new tab">&#x29c9;</button>
-        <span class="zoom-label">Loading...</span>
+  <div class="blueprint animate animate-delay-1">
+    <div class="bp-compass"><span>&#x25E3;</span>&ensp;N</div>
+    <div class="bp-scale">scale: 1 concept &asymp; 1 module &ensp;&#x2014;&ensp; rev. 1.0</div>
+
+    <div class="bp-grid">
+
+      <!-- NORTH: Pre-training -->
+      <div class="bp-zone bp-zone-double bp-zone-teal bp-north">
+        <span class="bp-zone-ribbon">Stage 1</span>
+        <div class="bp-zone-title">Unsupervised Pre-training</div>
+        <p>Next-token prediction on internet-scale text corpora. Produces the base model (Llama, Mistral, GPT, DeepSeek base).</p>
+        <ul>
+          <li>Self-supervised &mdash; the next token <em>is</em> the label</li>
+          <li>Data: Common Crawl, Wikipedia, books, code, papers</li>
+          <li>Infrastructure: thousands of GPUs, weeks of training</li>
+        </ul>
+        <div class="bp-chips">
+          <span class="bp-chip">causal LM</span>
+          <span class="bp-chip">base model</span>
+          <span class="bp-chip">autoregressive</span>
+        </div>
       </div>
-      <div class="mermaid-viewport">
-        <div class="mermaid-canvas"><div class="mermaid-canvas-inner"></div></div>
+
+      <!-- WEST: SFT Data Level -->
+      <div class="bp-zone bp-zone-dashed bp-zone-blue bp-west">
+        <span class="bp-zone-ribbon">Data</span>
+        <div class="bp-zone-title">SFT Data Level</div>
+        <ul>
+          <li><strong>Non-instructional</strong> &mdash; plain text PDFs/documents for domain adaptation</li>
+          <li><strong>Instructional</strong> &mdash; QA pairs (Alpaca, Open-Orca) for chatbot training</li>
+          <li>Data creation via human annotation or LLM synthetic generation</li>
+        </ul>
       </div>
-      <div class="diagram-source">
-mindmap
-  root((LLM Fine-Tuning))
-    Training Pipeline
-      Unsupervised Pre-training
-        Next-token prediction on internet-scale data
-        Produces base model like Llama base
-      Supervised Fine-tuning
-        Parameter Level
-          Full Fine-tuning
-          Partial and PEFT
-            LoRA and QLoRA
-            DoRA
-            Adapter Layers
-            BitFit and IA3
-            Prefix and Prompt Tuning
-        Data Level
-          Non-instructional plain text
-          Instructional QA pairs
-      Preference Alignment
-        RLHF via PPO
-        RLAIF
-        DPO Direct Preference Optimization
-    Frameworks and Tools
-      Hugging Face Ecosystem
-      LLaMA Factory
-      Unsloth
-      Axolotl
-    Special Topics
-      SLM Fine-tuning
-      Multimodal Fine-tuning
-      Embedding Fine-tuning
-    Model Families
-      Llama
-      GPT InstructGPT
-      Mistral
-      DeepSeek
-      Gemini
+
+      <!-- CORE -->
+      <div class="bp-zone-core bp-core">
+        <div class="bp-core-icon">LLM Fine-Tuning</div>
+        <div class="bp-core-sub">Course Topic Map</div>
+        <div class="bp-core-badge">14+ topics &times; 3 stages</div>
       </div>
+
+      <!-- EAST: PEFT Techniques -->
+      <div class="bp-zone bp-zone-dashed bp-zone-blue bp-east">
+        <span class="bp-zone-ribbon">PEFT</span>
+        <div class="bp-zone-title">Parameter-Efficient FT</div>
+        <ul>
+          <li><strong>LoRA / QLoRA</strong> &mdash; low-rank adapters on quantized base</li>
+          <li><strong>DoRA</strong> &mdash; weight-decomposed LoRA</li>
+          <li><strong>Adapter / BitFit / IA&sup3;</strong> &mdash; insert / bias / scale</li>
+          <li><strong>Prefix / Prompt Tuning</strong> &mdash; virtual token embeddings</li>
+        </ul>
+      </div>
+
+      <!-- SOUTH: Alignment -->
+      <div class="bp-zone bp-zone-double bp-zone-rose bp-south">
+        <span class="bp-zone-ribbon">Stage 3</span>
+        <div class="bp-zone-title">Preference Alignment</div>
+        <p>Align model outputs with human expectations: safe, helpful, polite, honest.</p>
+        <ul>
+          <li><strong>RLHF</strong> &mdash; reward model + PPO (InstructGPT)</li>
+          <li><strong>RLAIF</strong> &mdash; AI-generated preference labels (Anthropic)</li>
+          <li><strong>DPO</strong> &mdash; direct supervised loss, no reward model</li>
+        </ul>
+        <div class="bp-chips">
+          <span class="bp-chip">safety</span>
+          <span class="bp-chip">helpfulness</span>
+          <span class="bp-chip">honesty</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Connector lines -->
+    <div class="bp-connector bp-connector-ns"></div>
+    <div class="bp-connector bp-connector-we"></div>
+    <div class="bp-arrow bp-arrow-n"></div>
+    <div class="bp-arrow bp-arrow-s"></div>
+    <div class="bp-arrow bp-arrow-w"></div>
+    <div class="bp-arrow bp-arrow-e"></div>
+
+    <!-- Outer ring: cross-cutting topics -->
+    <div class="bp-outer">
+      <div class="bp-outer-item">
+        <div class="bp-outer-label">Frameworks &amp; Tools</div>
+        <p>Hugging Face &bull; LLaMA Factory &bull; Unsloth &bull; Axolotl</p>
+      </div>
+      <div class="bp-outer-item">
+        <div class="bp-outer-label">Dataset Types</div>
+        <p>Non-instructional &bull; Instructional &bull; Preference/DPO</p>
+      </div>
+      <div class="bp-outer-item">
+        <div class="bp-outer-label">Special Topics</div>
+        <p>SLM &bull; Multimodal &bull; Embedding Fine-tuning</p>
+      </div>
+      <div class="bp-outer-item">
+        <div class="bp-outer-label">Model Families</div>
+        <p>Llama &bull; GPT &bull; Mistral &bull; DeepSeek &bull; Gemini</p>
+      </div>
+    </div>
+
+    <div class="bp-title-block">
+      <strong>LLM Fine-Tuning &mdash; Architectural Zone Plan</strong> &ensp;|&ensp; rev 1 &ensp;|&ensp; sheet 1/1
     </div>
   </div>
 
@@ -1124,184 +1464,10 @@ mindmap
 
 </div>
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-
-  const config = {
-    fitPadding: 24,
-    minHeight: 400,
-    maxHeightPx: 1200,
-    maxHeightVh: 0.84,
-    maxInitialZoom: 1.6,
-    minZoom: 0.08,
-    maxZoom: 6.5,
-    zoomStep: 0.14,
-    readabilityFloor: 0.55
-  };
-
-  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
-  let activeDrag = null;
-  addEventListener('mousemove', e => activeDrag?.onMove(e));
-  addEventListener('mouseup', () => { activeDrag?.onEnd?.(); activeDrag = null; });
-
-  const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
-
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: 'base',
-    themeVariables: {
-      fontFamily: "'DM Sans', system-ui, sans-serif",
-      fontSize: '15px',
-      primaryColor: isDark ? '#1e3a5f' : '#dbeafe',
-      primaryBorderColor: isDark ? '#60a5fa' : '#1e40af',
-      primaryTextColor: isDark ? '#dbeafe' : '#1e3a5f',
-      secondaryColor: isDark ? '#3b2f10' : '#fef3c7',
-      secondaryBorderColor: isDark ? '#fbbf24' : '#d97706',
-      secondaryTextColor: isDark ? '#fef3c7' : '#1e293b',
-      tertiaryColor: isDark ? '#134e4a' : '#ccfbf1',
-      tertiaryBorderColor: isDark ? '#2dd4bf' : '#0d9488',
-      tertiaryTextColor: isDark ? '#ccfbf1' : '#134e4a',
-      lineColor: isDark ? '#475569' : '#94a3b8',
-      noteBkgColor: isDark ? '#1e3a5f' : '#fefce8',
-      noteTextColor: isDark ? '#dbeafe' : '#1e293b',
-      noteBorderColor: isDark ? '#fbbf24' : '#d97706',
-    }
-  });
-
-  function initDiagram(shell) {
-    const wrap = shell.querySelector('.mermaid-wrap');
-    const viewport = shell.querySelector('.mermaid-viewport');
-    const canvasInner = shell.querySelector('.mermaid-canvas-inner');
-    if (!canvasInner) { console.error('missing .mermaid-canvas-inner'); return; }
-    const source = shell.querySelector('.diagram-source');
-    const label = shell.querySelector('.zoom-label');
-    if (!wrap || !viewport || !source || !label) { console.error('missing elements'); return; }
-
-    let zoom = 1, fitMode = 'contain', panX = 0, panY = 0, svgW = 0, svgH = 0;
-    let sx = 0, sy = 0, spx = 0, spy = 0, touchDist = 0, touchCx = 0, touchCy = 0;
-
-    function constrainPan() {
-      const vpW = viewport.clientWidth, vpH = viewport.clientHeight;
-      const rW = svgW * zoom, rH = svgH * zoom, pad = config.fitPadding;
-      panX = (rW + pad * 2 <= vpW) ? (vpW - rW) / 2 : clamp(panX, vpW - rW - pad, pad);
-      panY = (rH + pad * 2 <= vpH) ? (vpH - rH) / 2 : clamp(panY, vpH - rH - pad, pad);
-    }
-    function applyTransform() {
-      const svg = canvasInner.querySelector('svg');
-      if (!svg || !svgW) return;
-      constrainPan();
-      svg.style.width = (svgW * zoom) + 'px';
-      svg.style.height = (svgH * zoom) + 'px';
-      canvasInner.style.transform = `translate(${panX}px, ${panY}px)`;
-      label.textContent = Math.round(zoom * 100) + '%';
-    }
-    function canPan() {
-      const rW = svgW * zoom, rH = svgH * zoom;
-      return rW + config.fitPadding * 2 > viewport.clientWidth || rH + config.fitPadding * 2 > viewport.clientHeight;
-    }
-    function computeSmartFit() {
-      const vpW = viewport.clientWidth, vpH = viewport.clientHeight;
-      const aW = Math.max(80, vpW - config.fitPadding * 2), aH = Math.max(80, vpH - config.fitPadding * 2);
-      const contain = Math.min(aW / svgW, aH / svgH);
-      let z = contain, mode = 'contain';
-      if (contain < config.readabilityFloor) {
-        const chartR = svgH / svgW, vpR = vpH / Math.max(vpW, 1);
-        if (chartR >= vpR) { z = aW / svgW; mode = 'width-priority'; }
-        else { z = aH / svgH; mode = 'height-priority'; }
-      }
-      return { zoom: clamp(z, config.minZoom, config.maxInitialZoom), mode };
-    }
-    function fitDiagram() {
-      if (!svgW) return;
-      const fit = computeSmartFit();
-      zoom = fit.zoom; fitMode = fit.mode;
-      panX = (viewport.clientWidth - svgW * zoom) / 2;
-      panY = (viewport.clientHeight - svgH * zoom) / 2;
-      applyTransform();
-    }
-    function zoomAround(factor, cx, cy) {
-      const next = clamp(zoom * factor, config.minZoom, config.maxZoom);
-      const ratio = next / zoom;
-      panX = cx - ratio * (cx - panX); panY = cy - ratio * (cy - panY);
-      zoom = next; fitMode = 'custom';
-      applyTransform();
-    }
-    function readSvgNaturalSize(svg) {
-      let w = 0, h = 0;
-      if (svg.viewBox?.baseVal?.width > 0) { w = svg.viewBox.baseVal.width; h = svg.viewBox.baseVal.height; }
-      if (!w) { w = parseFloat(svg.getAttribute('width')) || 0; h = parseFloat(svg.getAttribute('height')) || 0; }
-      if (!w) { const b = svg.getBBox(); w = b.width; h = b.height; }
-      if (!w) { const r = svg.getBoundingClientRect(); w = r.width || 1000; h = r.height || 700; }
-      if (!svg.getAttribute('viewBox')) svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      return { w, h };
-    }
-    function setAdaptiveHeight() {
-      if (!svgW) return;
-      const usableW = Math.max(280, wrap.getBoundingClientRect().width - 2);
-      const idealH = (svgH / svgW) * usableW + config.fitPadding * 2;
-      const maxVp = Math.floor(innerHeight * config.maxHeightVh);
-      const hardMax = Math.min(config.maxHeightPx, Math.max(config.minHeight + 40, maxVp));
-      wrap.style.height = Math.round(clamp(idealH, config.minHeight, hardMax)) + 'px';
-    }
-    function openInNewTab() {
-      const svg = canvasInner.querySelector('svg');
-      if (!svg) return;
-      const clone = svg.cloneNode(true);
-      clone.style.width = ''; clone.style.height = '';
-      const bg = isDark ? '#0f172a' : '#f1f5f9';
-      const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Diagram</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:${bg};padding:40px;box-sizing:border-box}svg{max-width:100%;max-height:90vh;height:auto}</style></head><body>${clone.outerHTML}</body></html>`;
-      open(URL.createObjectURL(new Blob([html], { type: 'text/html' })), '_blank');
-    }
-    async function render() {
-      try {
-        const code = source.textContent.trim();
-        if (!code) { label.textContent = 'Error: Empty source'; return; }
-        const id = 'd-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-        const { svg } = await mermaid.render(id, code);
-        canvasInner.innerHTML = svg;
-        const svgNode = canvasInner.querySelector('svg');
-        if (!svgNode) { label.textContent = 'Error: No SVG'; return; }
-        const size = readSvgNaturalSize(svgNode);
-        svgW = size.w; svgH = size.h;
-        svgNode.removeAttribute('width'); svgNode.removeAttribute('height');
-        svgNode.style.maxWidth = 'none'; svgNode.style.display = 'block';
-        setAdaptiveHeight(); fitDiagram();
-      } catch (err) {
-        console.error('Mermaid render failed:', err);
-        label.textContent = 'Error: ' + (err.message || 'Render failed');
-      }
-    }
-
-    const actions = {
-      'zoom-in': () => zoomAround(1 + config.zoomStep, viewport.clientWidth / 2, viewport.clientHeight / 2),
-      'zoom-out': () => zoomAround(1 / (1 + config.zoomStep), viewport.clientWidth / 2, viewport.clientHeight / 2),
-      'zoom-fit': fitDiagram, 'zoom-one': () => { zoom = clamp(1, config.minZoom, config.maxZoom); fitMode = '1:1'; panX = (viewport.clientWidth - svgW * zoom) / 2; panY = (viewport.clientHeight - svgH * zoom) / 2; applyTransform(); },
-      'zoom-expand': openInNewTab
-    };
-    Object.entries(actions).forEach(([a, h]) => wrap.querySelector(`[data-action="${a}"]`)?.addEventListener('click', h));
-    viewport.addEventListener('dblclick', fitDiagram);
-    viewport.addEventListener('wheel', e => {
-      if (e.ctrlKey || e.metaKey) { e.preventDefault(); const r = viewport.getBoundingClientRect(); zoomAround(e.deltaY < 0 ? 1 + config.zoomStep : 1 / (1 + config.zoomStep), e.clientX - r.left, e.clientY - r.top); return; }
-      if (canPan()) { e.preventDefault(); panX -= e.deltaX; panY -= e.deltaY; applyTransform(); }
-    }, { passive: false });
-    viewport.addEventListener('mousedown', e => {
-      if (e.target.closest('.zoom-controls') || !canPan()) return;
-      wrap.classList.add('is-panning'); sx = e.clientX; sy = e.clientY; spx = panX; spy = panY; e.preventDefault();
-      activeDrag = { onMove: ev => { panX = spx + (ev.clientX - sx); panY = spy + (ev.clientY - sy); applyTransform(); }, onEnd: () => wrap.classList.remove('is-panning') };
-    });
-    viewport.addEventListener('touchstart', e => {
-      if (e.touches.length === 1) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; spx = panX; spy = panY; }
-      else if (e.touches.length === 2) { const dx = e.touches[0].clientX - e.touches[1].clientX, dy = e.touches[0].clientY - e.touches[1].clientY; touchDist = Math.sqrt(dx*dx+dy*dy); const r = viewport.getBoundingClientRect(); touchCx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left; touchCy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top; }
-    }, { passive: true });
-    viewport.addEventListener('touchmove', e => {
-      if (e.touches.length === 1 && canPan()) { if (touchDist > 0) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; spx = panX; spy = panY; touchDist = 0; } e.preventDefault(); panX = spx + (e.touches[0].clientX - sx); panY = spy + (e.touches[0].clientY - sy); applyTransform(); }
-      else if (e.touches.length === 2 && touchDist > 0) { e.preventDefault(); const dx = e.touches[0].clientX - e.touches[1].clientX, dy = e.touches[0].clientY - e.touches[1].clientY; zoomAround(Math.sqrt(dx*dx+dy*dy) / touchDist, touchCx, touchCy); touchDist = Math.sqrt(dx*dx+dy*dy); }
-    }, { passive: false });
-    new ResizeObserver(() => { if (svgW) { setAdaptiveHeight(); fitDiagram(); } }).observe(wrap);
-    render();
-  }
-
-  document.querySelectorAll('.diagram-shell').forEach(initDiagram);
+<script>
+  // Animation-only helper: staggered fade-in is handled by CSS .animate and .animate-delay-*
+  // No Mermaid needed — the architectural blueprint is pure HTML/CSS
+  console.log('LLM Fine-Tuning Topic Map loaded. Blueprint zone map v1.0');
 </script>
 
 </body>
